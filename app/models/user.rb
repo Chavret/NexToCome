@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, uniqueness: true
-  validates :newsletter, default: "suscribe"
+  # validates :newsletter
 end
