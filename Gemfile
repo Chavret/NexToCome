@@ -17,9 +17,16 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "pundit"
+
+gem 'nokogiri'
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
+
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'acts_as_votable', '~> 0.10.0'
+
 
 
 group :development, :test do
