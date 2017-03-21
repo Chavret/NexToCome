@@ -1,0 +1,37 @@
+.login {
+  background: rgba(255, 247, 229, 0.8);
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: 0 0 12px 0 rgba(0,0,0,0.1), 0 10px 30px 0 rgba(0,0,0,0.2);
+  margin: -12.8125em 0 0;
+  width: 24em;
+  left: 5em;
+  top: 200px;
+  down: 200px;
+  padding: 20px;
+}
+
+.title-login {
+  font-size: 40px;
+  font-weight: lighter;
+  color: $red;
+  margin-bottom: 20px;
+  margin-top: 23px;
+}
+
+.remember {
+  color: white;
+}
+
+.checkbox {
+  color: white;
+}
+
+.login-content {
+  padding: 7px;
+  width: 100%;
+}
+
+.width-login {
+  width: 100%;
+}

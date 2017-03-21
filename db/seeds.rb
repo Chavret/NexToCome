@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-SubCategory.all.each {|s| s.destroy}
-Category.all.each {|c| c.destroy}
+
+SubCategory.destroy_all
+Category.destroy_all
+Event.destroy_all
 
 
 culture = Category.create!(name: "Culture")
@@ -73,7 +75,20 @@ vacances = SubCategory.create!(name: "Vacances", category_id: viepratique.id)
 fetesetrangeres = SubCategory.create!(name: "Fêtes étrangères", category_id: viepratique.id)
 jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepratique.id)
 
+20.times  do
+  date = rand(1..14).days.from_now
+  rating = rand(0..5)
+  sub_category = SubCategory.all.sample
 
+  Event.create!({
+    occurs_at:         date,
+    headline:          "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah",
+    headline_initial:  "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah",
+    sub_category:      sub_category,
+    rating:            rating,
+    source:            "www.blah.com"
+  })
+end
 
+puts "Seed OKAYYY"
 
-puts "SEED OKKKKKK"
