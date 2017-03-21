@@ -8,6 +8,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   # validates :newsletter
 
+  acts_as_voter
+  #to be able to select categories
+
    def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first
