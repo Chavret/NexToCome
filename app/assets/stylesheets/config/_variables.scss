@@ -2,9 +2,9 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+@import url("https://fonts.googleapis.com/css?family=Oswald:200|Dosis:200");
+$base-font:'Dosis', sans-serif;
+$header-font: 'Oswald', sans-serif;
 
 // Local fonts (uncomment following lines)
 // @font-face {
