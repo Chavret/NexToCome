@@ -1,3 +1,13 @@
+<%- if devise_mapping.omniauthable? %>
+
+  <%= link_to "Sign in with #{OmniAuth::Utils.camelize(resource_class.omniauth_providers.first)}", omniauth_authorize_path(resource_name, resource_class.omniauth_providers.first), class: "btn loginbtn width-login btn-#{OmniAuth::Utils.camelize(resource_class.omniauth_providers.first)}" %><br />
+
+  <%= link_to "Sign in with Google", omniauth_authorize_path(resource_name, resource_class.omniauth_providers.last), class: "btn loginbtn width-login btn-#{OmniAuth::Utils.camelize(resource_class.omniauth_providers.last)}" %><br />
+<% end -%>
+
+
+
+
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end -%>
@@ -18,8 +28,3 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
