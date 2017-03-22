@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   def admin
     @categories = Category.all
     @sub_categories = SubCategory.all
-    @events = policy_scope(Event).order(occurs_at: :desc)
+    @events = policy_scope(Event).order(occurs_at: :asc)
 
     @event = Event.new
   end
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
     events = policy_scope(Event).
       joins(:category).
       where(categories: { name: @selected_categories }).
-      order(created_at: :desc)
+      order(occurs_at: :desc)
 
     @hash = {}
     date = Time.now.to_date - 1.days
