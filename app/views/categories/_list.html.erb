@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <% categories.each do |category| %>
+
+      <%= link_to events_path(categories: @selected_categories.include?(category.name) ? (@selected_categories - [category.name]) : (@selected_categories + [category.name])) do %>
+
+        <div id="<%= category.name %>", class="col-xs-2 col-half-offset category-name">
+            <%= category.name %>
+        </div>
+
+      <% end %>
+
+    <% end %>
+  </div>
+</div>

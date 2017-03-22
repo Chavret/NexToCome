@@ -1,0 +1,17 @@
+.col-half-offset{
+    margin-left: 3.166667%;
+}
+.category-name {
+  text-align: center;
+  font-size: 30px;
+  color: $yellow;
+  padding: 3px 10px;
+  border-bottom: 5px solid $yellow;
+  transition: background 0.3s ease;
+}
+.category-name:hover {
+  opacity: 0.5;
+  background: $yellow;
+  text-decoration: none;
+  color: white;
+}
