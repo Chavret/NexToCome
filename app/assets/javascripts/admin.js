@@ -22,5 +22,28 @@ $(document).ready(function() {
 
     }
   });
+  var more = false
+
+  $("#submit_button").submit(function(event) {
+
+  /* stop form from submitting normally */
+   event.preventDefault();
+
+  /* get values from elements on the page: */
+   var more = $('#radio-button').val();
+
+  /* Send the data using post and put the results in a div */
+    $.ajax({
+      url: "/admin/?more="+more,
+      type: "get",
+      data: values,
+      success: function(){
+        alert('Loaded Successfully');
+      },
+      error:function(){
+       alert('Error');
+      }
+    });
+  });
 
 })

@@ -17,6 +17,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "pundit"
+gem 'kaminari'
 
 gem 'nokogiri'
 source "https://rails-assets.org" do

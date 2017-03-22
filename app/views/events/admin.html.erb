@@ -9,6 +9,7 @@
           </div>
           <br><br>
         <% end %>
+
         <% @events.each do |e| %>
 
           <div class="admin-content">
@@ -31,6 +32,7 @@
 
           <br><br>
         <%end%>
+          <%= paginate @events %>
       <br><br>
       </div>
     </div>
