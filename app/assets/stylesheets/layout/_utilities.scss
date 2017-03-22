@@ -11,18 +11,9 @@
 }
 
 // Backgrounds
-.bg-black {
-  background: #4a4a4a;
-}
-.bg-grey {
-  background: #aeaeae;
-}
 .bg-blue {
-  background: #00a3e1;
+  background: $light-blue;
 }
 .bg-dark-blue {
-  background: #3b5998;
-}
-.invisible {
-  display: none;
+  background: $dark-blue;
 }

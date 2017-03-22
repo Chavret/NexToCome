@@ -1,25 +1,5 @@
-<div class="page-content text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-4 col-lg-2 col-lg-offset-1">
-        <% @categories.each do |c|%>
-          <div><%= c.name %></div>
-        <% end%>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-4 col-lg-2 col-lg-offset-1">
-        <% @sub_categories.each do |c|%>
-          <div><%= c.name %></div>
-        <% end %>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 text-center">
-
-      </div>
-    </div>
+<div class="bg-blue">
+  <%= render "categories/list", categories: @categories %>
+  <div class="wrapper">
   </div>
 </div>

@@ -1,0 +1,14 @@
+<% events.each do |date, events| %>
+
+  <div class="column">
+
+    <h4><%= date.strftime("%A %e %B") %></h4>
+    <% events.each do |event| %>
+    <h5><%= event.sub_category.name %></h5>
+    <p><%= event.headline %></p>
+    <% end %>
+
+  </div>
+
+<% end %>
+
