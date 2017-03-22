@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     @event.save
     authorize @event
 
-    redirect_to events_path
+    redirect_to admin_path
   end
 
   def update
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
       sub_categorie.event = @event
     end
     @event.update(event_params)
-    redirect_to events_path
+    redirect_to admin_path
   end
 
   def edit
@@ -31,7 +31,8 @@ class EventsController < ApplicationController
   def admin
     @categories = Category.all
     @sub_categories = SubCategory.all
-    @events = policy_scope(Event)
+    @events = policy_scope(Event).order(occurs_at: :desc)
+
     @event = Event.new
   end
 
@@ -48,7 +49,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(:id)
+    @event = Event.find(params[:id])
     authorize @event
   end
 

@@ -1,9 +1,9 @@
-<%= simple_form_for event do |form| %>
+<%= simple_form_for(event, html: { class: 'form-inline' }) do |form| %>
+  <%= form.input :occurs_at, as: :string, label: "Date: ", input_html: { class: 'datepicker' } %>
   <%= form.input :headline %>
-  <%= form.input :description %>
-  <%= form.input :occurs_at, as: :string, label: "When is the event?", input_html: { class: 'datepicker' } %>
   <%= form.association :sub_category %>
   <%= form.input :rating, collection: (1..5) %>
+  <%= form.input :description %>
   <%= form.input :status, collection: ["Pending", "Valid"] %>
   <%= form.button :submit %>
 <% end %>
