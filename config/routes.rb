@@ -7,5 +7,11 @@ Rails.application.routes.draw do
   get 'admin', to: 'events#admin'
 
   resources :events
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :preferences, only: [] do
+    collection do
+      post :save_filters
+    end
+  end
+
 end

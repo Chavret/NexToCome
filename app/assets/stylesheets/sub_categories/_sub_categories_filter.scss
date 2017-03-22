@@ -1,19 +1,16 @@
-.col-half-offset{
-    margin-left: 3.166667%;
-}
-.category-name {
+.sub_category-name {
   text-align: center;
-  font-size: 30px;
+  font-size: 16px;
   color: $yellow;
   opacity: 0.5;
   padding: 3px 10px;
-  border-bottom: 5px solid $yellow;
+  // border-bottom: 5px solid $yellow;
   transition: background 0.3s ease;
 }
-.category-name.active {
+.sub_category-name.active {
   opacity: 1;
 }
-.category-name:hover {
+.sub_category-name:hover {
   opacity: 0.5;
   background: $yellow;
   text-decoration: none;

@@ -1,5 +1,26 @@
 <div class="bg-blue">
-  <%= render "categories/list", categories: @categories %>
-  <div class="wrapper">
+
+  <div class="text-right">
+    <%= form_tag save_filters_preferences_path, method: :post do %>
+      <% @selected_categories.each do |category_name| %>
+        <%= hidden_field_tag "categories[]", category_name %>
+       <!-- ADD SubCategory -->
+      <% end %>
+      <%= submit_tag "enregistrer la selection", :class => "btn-yellow small" %>
+    <% end %>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <%= render "categories/list", categories: @categories %>
+    </div>
+    <div class="row">
+      <%= render "sub_categories/list", categories: @categories %>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <%= render "list", events: @hash %>
+  </div>
+
 </div>

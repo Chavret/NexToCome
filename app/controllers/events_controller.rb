@@ -36,11 +36,26 @@ class EventsController < ApplicationController
   end
 
   def index
-    @selected_categories = params[:categories].presence || Category.pluck(:name)
+    # TODO: update line below to take into account liked items
+
     @categories = Category.all
+
+    categories_preferences = []
+    sub_categories_preferences = []
+
+    current_user.find_liked_items.each do |preference|
+      categories_preferences << preference if preference.class == Category
+      sub_categories_preferences << preference if preference.class == SubCategory
+    end
+
+    @selected_categories = params[:categories].presence || categories_preferences.pluck(:name) || Category.pluck(:name)
+    @selected_sub_categories = params[:sub_categories].presence || sub_categories_preferences.pluck(:name) || SubCategory.pluck(:name)
+
     events = policy_scope(Event).
       joins(:category).
-      where(categories: { name: @selected_categories }).
+      where(categories: { name: @selected_categories }, sub_categories: { name: @selected_sub_categories}).
+      joins(:sub_category).
+      where(sub_categories: { name: @selected_sub_categories}).
       order(created_at: :desc)
 
     @hash = {}

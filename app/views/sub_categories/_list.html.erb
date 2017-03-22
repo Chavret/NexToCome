@@ -1,0 +1,13 @@
+<% categories.each do |category| %>
+
+  <% category.sub_categories.each do |sub_category| %>
+
+    <%= link_to events_path(sub_category_filter_params(sub_category.name)) do %>
+      <div class="col-xs-12 sub_category-name <%= 'active' if @selected_categories.include?(sub_category.name) %>">
+          <%= sub_category.name %>
+      </div>
+    <% end %>
+
+  <% end %>
+
+<% end %>
