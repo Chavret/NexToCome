@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.0.2)
       actionpack (= 5.0.2)
@@ -38,6 +39,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts_as_votable (0.10.0)
     arel (7.1.4)
     autoprefixer-rails (6.7.7)
       execjs
@@ -150,6 +152,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.2)
       sprockets-rails (>= 2.0.0)
+    rails-assets-bootstrap-datepicker (1.6.4)
+      rails-assets-jquery (>= 1.7.1)
+    rails-assets-jquery (3.1.1)
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6)
@@ -208,6 +213,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable (~> 0.10.0)
   autoprefixer-rails
   better_errors
   binding_of_caller
@@ -218,6 +224,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
+  nokogiri
   omniauth-facebook
   omniauth-google-oauth2
   pg
@@ -226,6 +233,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 5.0.2)
+  rails-assets-bootstrap-datepicker!
   redis
   sass-rails
   simple_form
