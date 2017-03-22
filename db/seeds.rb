@@ -89,7 +89,7 @@ fetesetrangeres = SubCategory.create!(name: "Fêtes étrangères", category_id: 
 jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepratique.id)
 
 n = 0
-    
+
 20.times  do
   date = rand(1..14).days.from_now.to_date
   rating = rand(0..5)
@@ -112,8 +112,15 @@ csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 filepath    = File.join(__dir__, 'ComingUpDataCSV.csv')
 
 CSV.foreach(filepath, csv_options) do |row|
-  event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], sub_category_id: row[3], rating: row[4], source: row[5], valid: row[6], description: row[7])
-
+  if SubCategory.exists?(name: row[8])
+    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
+    sub_cat = SubCategory.where(name: row[8].to_s).first
+    event.sub_category = sub_cat
+    p event.sub_category.name
+    event.save
+  else
+    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
+  end
 end
 
 puts "Seed OKAYYY"
