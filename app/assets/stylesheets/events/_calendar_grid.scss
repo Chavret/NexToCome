@@ -4,8 +4,8 @@
     white-space:nowrap;
 }
 .column {
-    box-shadow: 1px 1px 3px #999;
-    // margin: 2px;
+    border-top: 1px solid $yellow;
+    background-color: white;
     width: calc(100%/7 - 4px);
     height: calc(100vh - 70px); // navbar
     display:inline-block;

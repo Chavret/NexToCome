@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    @categories = Category.all
     @events = policy_scope(Event).order(created_at: :desc)
 
     @hash = {}
