@@ -4,4 +4,16 @@ class EventPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def update?
+    user.admin?
+  end
+
+  def create?
+    user.admin?
+  end
+
+  def admin?
+    user.admin?
+  end
 end
