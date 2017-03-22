@@ -224,12 +224,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
-
   nokogiri
-
   omniauth-facebook
   omniauth-google-oauth2
-
   pg
   pry-byebug
   pry-rails

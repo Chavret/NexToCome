@@ -18,7 +18,18 @@
     </div>
     <div class="row">
       <div class="col-xs-12 text-center">
+        <% if (policy(Event).create?) %>
+          <%= render 'new', event: @event %>
+        <% end %>
+        <% @events.each do |e| %>
+          <title><%= e.occurs_at %></title>
+          <p><%= e.headline %></p>
+          <div><%= e.status %></div>
 
+          <% if policy(Event).update? %>
+            <%= render 'edit', event: e %>
+          <%end%>
+        <%end%>
       </div>
     </div>
   </div>

@@ -12,4 +12,8 @@ class EventPolicy < ApplicationPolicy
   def create?
     user.admin?
   end
+
+  def admin?
+    user.admin?
+  end
 end
