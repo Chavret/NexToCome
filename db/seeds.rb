@@ -116,7 +116,7 @@ CSV.foreach(filepath, csv_options) do |row|
     event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
     sub_cat = SubCategory.where(name: row[8].to_s).first
     event.sub_category = sub_cat
-    p event.sub_category.name
+    event.status = "Pending"
     event.save
   else
     event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
