@@ -9,6 +9,8 @@
 
     html_doc = Nokogiri::HTML(html_file)
 
+    p html_doc.search('.card-entity-list')
+
     html_doc.search('.card-entity-list').each do |element|
       seances = element.search('.txt').text
       if seances.include? '('
