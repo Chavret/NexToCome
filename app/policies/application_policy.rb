@@ -27,6 +27,10 @@ class ApplicationPolicy
     false
   end
 
+  def admin?
+    false
+  end
+
   def edit?
     update?
   end

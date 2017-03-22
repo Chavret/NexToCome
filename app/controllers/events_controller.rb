@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :destroy, :update]
+  skip_after_action :verify_authorized, only: [:admin]
+
 
   def new
     @event = authorize Event.new
@@ -26,11 +28,15 @@ class EventsController < ApplicationController
   def edit
   end
 
-  def index
+  def admin
     @categories = Category.all
     @sub_categories = SubCategory.all
     @events = policy_scope(Event)
     @event = Event.new
+  end
+
+  def index
+
   end
 
   def destroy
