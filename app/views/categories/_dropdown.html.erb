@@ -1,8 +1,33 @@
 <% categories.each do |category| %>
 
-  <!--   <%= link_to events_path(category_filter_params(category.name)) do %> -->
-      <div class="col-xs-2 col-half-offset category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
-      </div>
-  <!--   <% end %> -->
+  <div id="<%= category.name.delete(' ') %>", class="col-xs-2 col-half-offset category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
+  </div>
+
+ <% content_for(:js) do %>
+
+    <script type="text/javascript" >
+
+      $(document).ready(function(){
+        $("#<%= category.name.delete(' ') %>").hover(
+          function(event) {
+            $("#show-<%= category.name.delete(' ') %>").removeClass("hide");
+          },
+          function(event) {
+            $("#show-<%= category.name.delete(' ') %>").addClass("hide");
+          }
+        );
+        $("#show-<%= category.name.delete(' ') %>").hover(
+          function(event) {
+            $(this).removeClass("hide");
+          },
+          function(event) {
+            $(this).addClass("hide");
+          }
+        );
+      });
+
+    </script>
+
+  <% end %>
 
 <% end %>
