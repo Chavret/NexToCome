@@ -1,9 +1,23 @@
-  require 'open-uri'
-  require 'nokogiri'
+
+require 'open-uri'
+require 'nokogiri'
 
 
-  t = Time.now
-  #get an array of the next 4 weeks in the allocine format
+class AllocineJob < ApplicationJob
+  queue_as :default
+
+  def perform(*args)
+    # Do something later
+    t = Time.now
+    4.times do
+    t += 7*24*60*60
+    scraped_week = t.strftime("sem-%Y-%m-%d/")
+    html_file = open("http://www.allocine.fr/film/agenda/#{scraped_week}")
+    allocine_week_scraper(html_file)
+  end
+
+  end
+
 
   def allocine_week_scraper(html_file)
 
@@ -29,15 +43,12 @@
     end
 end
 
-  4.times do
-    t += 7*24*60*60
-    scraped_week = t.strftime("sem-%Y-%m-%d/")
-    html_file = open("http://www.allocine.fr/film/agenda/#{scraped_week}")
-    allocine_week_scraper(html_file)
-  end
+
 #faire le scraper pour un mois avec une condition "est ce que ça existe déjà ?"
 
 #apres il suffira dinstaller la gem qui le fait automatiquement
 
 
 
+
+end
