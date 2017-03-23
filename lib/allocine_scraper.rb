@@ -15,7 +15,7 @@
       seances = element.search('.txt').text
       if seances.include? '('
         seances_num = seances.scan(/\(([^\)]+)\)/).last.first.to_i
-          if  seances_num > 200
+          if  seances_num > 50
             # and Event.where(name: element.search('.meta-title-link').text).blank?
           event = {
             headline: element.search('.meta-title-link').text,
