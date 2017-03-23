@@ -1,3 +1,25 @@
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+# testing = SubCategory.create!(name: "test")
+
+# csv_options = { col_sep: ';', headers: :first_row }
+# filepath    = File.join(__dir__, 'CSVfileSimon.csv')
+
+# CSV.foreach(filepath, csv_options) do |row|
+#   event = Event.create!(headline: row[1], occurs_at: Date.parse(row[0]), sub_category: testing)
+#   puts event.headline
+# end
+
+
+
+
 Event.destroy_all
 SubCategory.destroy_all
 Category.destroy_all
@@ -67,7 +89,7 @@ fetesetrangeres = SubCategory.create!(name: "Fêtes étrangères", category_id: 
 jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepratique.id)
 
 n = 0
-    
+
 20.times  do
   date = rand(1..14).days.from_now.to_date
   rating = rand(0..5)
@@ -84,5 +106,22 @@ n = 0
     source:            "www.blah.com"
   })
 end
+require 'csv'
+
+csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
+filepath    = File.join(__dir__, 'ComingUpDataCSV.csv')
+
+CSV.foreach(filepath, csv_options) do |row|
+  if SubCategory.exists?(name: row[8])
+    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
+    sub_cat = SubCategory.where(name: row[8].to_s).first
+    event.sub_category = sub_cat
+    event.status = "Pending"
+    event.save
+  else
+    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
+  end
+end
 
 puts "Seed OKAYYY"
+

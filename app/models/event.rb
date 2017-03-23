@@ -5,5 +5,6 @@ class Event < ApplicationRecord
   validates :occurs_at, presence: true, uniqueness: { scope: :headline }
   validates :headline, presence: true
   # validates :valid
+  paginates_per 50
 end
 

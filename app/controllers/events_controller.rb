@@ -11,8 +11,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.save
     authorize @event
-
-    redirect_to events_path
+    redirect_to admin_path
   end
 
   def update
@@ -22,7 +21,7 @@ class EventsController < ApplicationController
       sub_categorie.event = @event
     end
     @event.update(event_params)
-    redirect_to events_path
+    redirect_to admin_path
   end
 
   def edit
@@ -31,7 +30,10 @@ class EventsController < ApplicationController
   def admin
     @categories = Category.all
     @sub_categories = SubCategory.all
-    @events = policy_scope(Event)
+    @events = policy_scope(Event).where("occurs_at > ?", Date.today).order(occurs_at: :asc).page params[:page]
+    # unless params[:id_page].nil?
+    #   @events = @events[50*params[:id_page]..50*params[:id_page]+50]
+    # end
     @event = Event.new
   end
 
@@ -66,7 +68,6 @@ class EventsController < ApplicationController
     30.times do
       @hash[date += 1.day] = []
     end
-
     @hash.each do |date, _date_events|
       @hash[date] << events.where(occurs_at: date)
       @hash[date].flatten!
@@ -83,7 +84,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(:id)
+    @event = Event.find(params[:id])
     authorize @event
   end
 
@@ -99,5 +100,4 @@ class EventsController < ApplicationController
       :status)
 
   end
-
 end

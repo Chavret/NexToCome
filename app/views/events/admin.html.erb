@@ -1,35 +1,39 @@
 <div class="page-content text-center">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-4 col-lg-2 col-lg-offset-1">
-        <% @categories.each do |c|%>
-          <div><%= c.name %></div>
-        <% end%>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-4 col-lg-2 col-lg-offset-1">
-        <% @sub_categories.each do |c|%>
-          <div><%= c.name %></div>
-        <% end %>
-
-      </div>
-    </div>
-    <div class="row">
       <div class="col-xs-12 text-center">
+        <button class=" btn btn_create btn-primary">Create </button>
         <% if (policy(Event).create?) %>
-          <%= render 'new', event: @event %>
+          <div class="new_form">
+            <%= render 'new', event: @event %>
+          </div>
+          <br><br>
         <% end %>
-        <% @events.each do |e| %>
-          <title><%= e.occurs_at %></title>
-          <p><%= e.headline %></p>
-          <div><%= e.status %></div>
 
-          <% if policy(Event).update? %>
-            <%= render 'edit', event: e %>
-          <%end%>
+        <% @events.each do |e| %>
+
+          <div class="admin-content">
+            <div class="events_admin">
+              <h2><%= e.headline %></h2>
+              <div><%= e.occurs_at.strftime("%d/%m/%Y") %></div>
+              <div class="status"
+                <% if e.status == "Valid"%> style="color: red;"<%end %>><%= e.status %>
+              </div>
+            </div>
+            <br><br>
+
+            <% if policy(Event).update? %>
+              <div class="edit_form">
+                <%= render 'edit', event: e %>
+              </div>
+            <%end%>
+
+          </div>
+
+          <br><br>
         <%end%>
+          <%= paginate @events %>
+      <br><br>
       </div>
     </div>
   </div>
