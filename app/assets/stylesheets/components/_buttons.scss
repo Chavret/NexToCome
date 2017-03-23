@@ -61,9 +61,9 @@
 
 /* base buttons */
 .btn-yellow {
-  height: 40px;
+  height: 35px;
   padding: 0px 10px;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: transparent;
   color: $yellow;
   font-size: 24px;
@@ -72,8 +72,9 @@
   margin: 5px;
 }
 .btn-yellow:hover {
-  // text-decoration: none;
-  opacity: 0.5;
+  opacity: 1;
+  background-color: $yellow;
+  color: white;
 }
 .btn-yellow.small {
   font-size: 16px;

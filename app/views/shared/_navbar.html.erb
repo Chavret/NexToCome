@@ -1,24 +1,30 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "placehold.it/70" %>
+    <h3>ComingUp <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
-
+    <!-- Button (call-to-action) -->
+    <%= form_tag save_filters_preferences_path, method: :post do %>
+      <% @selected_categories.each do |category_name| %>
+        <%= hidden_field_tag "categories[]", category_name %>
+      <% end %>
+      <% @selected_sub_categories.each do |sub_category_name| %> <!-- Check -->
+        <%= hidden_field_tag "sub_categories[]", sub_category_name %>
+      <% end %>
+      <%= submit_tag "Sauvegarder la sélection", :class => "btn-yellow small" %>
+    <% end %>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <!-- Notification -->
-
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% avatar_url = current_user.picture_url || "http://placehold.it/30x30" %>
+          <% avatar_url = current_user.picture_url || "http://cdn.patch.com/assets/contrib/images/placeholder-user-photo.png" %>
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -42,8 +48,7 @@
 
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Sauvegarder calendrier"), events_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

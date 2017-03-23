@@ -2,8 +2,10 @@
   color: $yellow;
   opacity: 0.5;
   margin-top: 0px;
-  border-bottom: 5px solid $yellow;
+  padding: 0px;
+  // border-top: 2px solid $yellow;
   transition: background 0.3s ease;
+  text-align: center;
 }
 .category-dropdown.active {
   opacity: 1;
@@ -12,4 +14,15 @@
   opacity: 0.5;
   text-decoration: none;
   color: white;
+}
+.category-dropdown i {
+  color: $yellow;
+}
+.dropdown-border {
+  border-top: 1px solid rgba(246, 198, 103, 0.2);
+  background-color: rgba(247, 250, 252, 1);
+  // margin-bottom: 5px;
+}
+.fa.fa-angle-double-down {
+  font-size: 25px;
 }
