@@ -60,7 +60,7 @@ class EventsController < ApplicationController
       where(
         categories: { name: @selected_categories },
         sub_categories: { name: @selected_sub_categories }
-      ). # where(categories: { name: @selected_categories, sub_category: @selected_sub_categories }).
+      ).
       order(created_at: :desc)
 
     @hash = {}
@@ -72,7 +72,7 @@ class EventsController < ApplicationController
       @hash[date] << events.where(occurs_at: date)
       @hash[date].flatten!
     end
-# raise
+
   end
 
   def destroy
