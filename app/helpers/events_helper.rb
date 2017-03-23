@@ -13,10 +13,10 @@ module EventsHelper
     filter_params
   end
 
-    def sub_category_filter_params(sub_category_name)
+  def sub_category_filter_params(sub_category_name)
     filter_params = {}
 
-    if @selected_categories.include?(sub_category_name)
+    if @selected_sub_categories.include?(sub_category_name)
       filter_params[:sub_categories] = @selected_sub_categories - [sub_category_name]
     else
       filter_params[:sub_categories] = @selected_sub_categories + [sub_category_name]

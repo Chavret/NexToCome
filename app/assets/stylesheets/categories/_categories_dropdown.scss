@@ -1,0 +1,15 @@
+.category-dropdown {
+  color: $yellow;
+  opacity: 0.5;
+  margin-top: 0px;
+  border-bottom: 5px solid $yellow;
+  transition: background 0.3s ease;
+}
+.category-dropdown.active {
+  opacity: 1;
+}
+.category-dropdown:hover {
+  opacity: 0.5;
+  text-decoration: none;
+  color: white;
+}

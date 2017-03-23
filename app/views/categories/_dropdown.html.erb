@@ -1,0 +1,8 @@
+<% categories.each do |category| %>
+
+  <!--   <%= link_to events_path(category_filter_params(category.name)) do %> -->
+      <div class="col-xs-2 col-half-offset category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
+      </div>
+  <!--   <% end %> -->
+
+<% end %>
