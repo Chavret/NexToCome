@@ -7,8 +7,10 @@ event_serialized = open(url).read
 def electionsjson_scraper(event_serialized)
 
   info = JSON.parse(event_serialized)
-  total = event["iTotalRecords"]
+  total = info["iTotalRecords"]
   i = 0
+
+  puts total
 
   until i == total - 1
     country = info["aaData"][i][1][0]
@@ -20,9 +22,10 @@ def electionsjson_scraper(event_serialized)
     if status == "Confirmed"
       event = {
         occurs_at: date,
-        headline: "#{title} of #{country}",
+        headline_initial: "#{title} of #{country}",
         sub_category_name: "Elections",
         }
+        event.save
     end
     i +=1
   end
