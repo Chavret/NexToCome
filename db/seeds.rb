@@ -109,7 +109,7 @@ end
 require 'csv'
 
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
-filepath    = File.join(__dir__, 'ComingUpDataCSV.csv')
+filepath    = File.join(__dir__, 'ComingUpDataCSV2.csv')
 
 CSV.foreach(filepath, csv_options) do |row|
   if SubCategory.exists?(name: row[8])
