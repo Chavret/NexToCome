@@ -9,13 +9,13 @@ class LequipeJob < ApplicationJob
   def perform
     html_file = open("http://www.lequipe.fr/Football/FootballResultat54952.html")
     classement = open("http://www.lequipe.fr/Football/ligue-1-classement.html")
-    top_selection(classement)
-    lequipe_ligue1(html_file)
+    top_teams = top_selection(classement)
+    lequipe_ligue1(html_file, top_teams)
 
     # Do something later
   end
 
-  def lequipe_ligue1(html_file)
+  def lequipe_ligue1(html_file, top_teams)
     categorie = Category.find_by_name('Sport')
     html_doc = Nokogiri::HTML(html_file)
 
@@ -24,27 +24,33 @@ class LequipeJob < ApplicationJob
     p date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text)
     title = [element.search('.equipeDom').text, element.search('.equipeExt').text, element.search('.score').text].join(" - ")
 
-    event = Event.new(
-            headline: title,
-            headline_initial: title,
-            category: categorie,
-            sub_category_id: SubCategory.find_by(name: 'Football'),
-            occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text
-            ))
-    p event
+    if top_teams.include?(title.split(" "))
+      p "true"
+    #create event only if included in top selection: it's still never validating
 
+      event = Event.new(
+              headline: title,
+              headline_initial: title,
+              category: categorie,
+              sub_category_id: SubCategory.find_by(name: 'Football'),
+              occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text
+              ))
+      p event
+    end
 
     end
   end
 
   def top_selection(html_file)
     top_to_take = "5"
+    top_teams = []
     html_doc = Nokogiri::HTML(html_file)
     html_doc.search('.js-tr-hover').each do |team|
     p team.search('.team-label').text
-
+    top_teams << team.search('.team-label').text
     break if team.search('.rang').text == top_to_take
    end
+   top_teams
   end
 
   def date_translater_lequipe(french_date)
