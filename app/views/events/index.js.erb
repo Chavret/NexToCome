@@ -14,11 +14,5 @@ categories.slideDown();
 
 $('.sub-category-bar').html(sub_categories);
 sub_categories.slideDown();
-  // Create a paragraph for the new review. But hide it.
-  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  // Show the new review with an animation!
-  // Reset the form
 
-
-
-
+$('.save-filters-form-container').html("<%= j render 'shared/save_preferences_form', selected_categories: @selected_categories, selected_sub_categories: @selected_sub_categories %>");
