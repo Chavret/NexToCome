@@ -11,4 +11,5 @@ $(document).ready(function(){
       $("#arrow-category-" + categoryId).toggleClass(".fa fa-angle-double-up").toggleClass(".fa fa-angle-double-down");
     };
   });
+
 });

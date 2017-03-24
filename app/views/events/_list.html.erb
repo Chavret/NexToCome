@@ -4,11 +4,15 @@
     <h4><%= date.strftime("%A %e %B") %></h4>
     <div class="jours" >
       <% events.each do |event| %>
-        <h5><%= event.sub_category.name %></h5>
-        <p><%= event.headline %></p>
+        <div id="event-div">
+          <h5><%= event.sub_category.name %></h5>
+          <p><%= event.headline %></p>
+          <% unless event.description.nil? %>
+            <div class="description hide"><%= event.description %></div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
-
 <% end %>
 
