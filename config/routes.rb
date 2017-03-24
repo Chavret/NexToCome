@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get 'admin', to: 'events#admin'
-  root to: 'events#index'
+  # root to: 'events#index'
+  root to: 'pages#home'
 
   resources :events
 
