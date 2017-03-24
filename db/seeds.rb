@@ -89,23 +89,6 @@ fetesetrangeres = SubCategory.create!(name: "Fêtes étrangères", category_id: 
 jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepratique.id)
 
 n = 0
-
-20.times  do
-  date = rand(1..14).days.from_now.to_date
-  rating = rand(0..5)
-  sub_category = SubCategory.all.sample
-  headline = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah"
-  n += 1
-
-  Event.create!({
-    occurs_at:         date,
-    headline:          headline + n.to_s,
-    headline_initial:  headline + n.to_s,
-    sub_category:      sub_category,
-    rating:            rating,
-    source:            "www.blah.com"
-  })
-end
 require 'csv'
 
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
