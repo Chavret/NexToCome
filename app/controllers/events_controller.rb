@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   def admin
     @categories = Category.all
     @sub_categories = SubCategory.all
-    @events = policy_scope(Event).where("occurs_at > ?", Date.today).order(occurs_at: :asc).page params[:page]
+    @events = policy_scope(Event).where("occurs_at > ?", Date.today).where(status: "Pending").order(occurs_at: :asc).page params[:page]
     # unless params[:id_page].nil?
     #   @events = @events[50*params[:id_page]..50*params[:id_page]+50]
     # end
