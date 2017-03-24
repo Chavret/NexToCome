@@ -1,0 +1,59 @@
+require 'open-uri'
+require 'nokogiri'
+
+
+
+class LequipeJob < ApplicationJob
+  queue_as :default
+
+  def perform
+    html_file = open("http://www.lequipe.fr/Football/FootballResultat54952.html")
+    lequipe_ligue1(html_file)
+
+    # Do something later
+  end
+
+  def lequipe_ligue1(html_file)
+    categorie = Category.find_by_name('Sport')
+    html_doc = Nokogiri::HTML(html_file)
+
+    html_doc.search('.bb-color').each do |element|
+    p element.xpath('preceding-sibling::h2').last.text
+    p date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text)
+    title = [element.search('.equipeDom').text, element.search('.equipeExt').text, element.search('.score').text].join(" - ")
+
+    event = Event.new(
+            headline: title,
+            headline_initial: title,
+            category: categorie,
+            sub_category_id: SubCategory.find_by(name: 'Football'),
+            occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text
+            ))
+    p event
+
+
+    end
+  end
+
+  def date_translater_lequipe(french_date)
+     array = french_date.split(/\W+/)
+     array.delete_at(0)
+     translation = {
+      janvier: 'January',
+      fevrier: 'February',
+      mars: 'March',
+      avril: 'April',
+      mai: 'May',
+      juin: "June",
+      juillet: 'July',
+      aout: 'August',
+      septembre: 'September',
+      octobre: 'October',
+      novembre: 'November',
+      decembre: 'December'
+    }
+      new_date = [array[0], translation[array[1].to_sym], array[2]].join(' ')
+
+
+  end
+end
