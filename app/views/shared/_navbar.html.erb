@@ -15,7 +15,7 @@
       <% @selected_sub_categories.each do |sub_category_name| %> <!-- Check -->
         <%= hidden_field_tag "sub_categories[]", sub_category_name %>
       <% end %>
-      <%= submit_tag "Sauvegarder la sélection", :class => "btn-yellow small" %>
+      <%= submit_tag "Sauvegarder la sélection", :class => "btn-yellow" %>
     <% end %>
 
     <!-- Different navigation if login or not -->
