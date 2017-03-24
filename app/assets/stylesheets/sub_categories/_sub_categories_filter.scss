@@ -1,0 +1,19 @@
+.sub_category-name {
+  text-align: center;
+  font-size: 20px;
+  color: $yellow;
+  opacity: 0.5;
+  padding: 3px 10px;
+  // border-bottom: 5px solid $yellow;
+  transition: background 0.3s ease;
+}
+.sub_category-name.active {
+  opacity: 1;
+  font-weight: bold;
+}
+.sub_category-name:hover {
+  opacity: 0.5;
+  background: $yellow;
+  text-decoration: none;
+  color: white;
+}

@@ -30,8 +30,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'acts_as_votable', '~> 0.10.0'
 
-
-
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

@@ -1,5 +1,22 @@
-<div class="bg-blue">
-  <%= render "categories/list", categories: @categories %>
-  <div class="wrapper">
+<%= render "shared/navbar", categories: @categories, sub_categories: @sub_categories %>
+
+<div class="bg-blue margin-navbar">
+
+  <div class="container">
+
+    <div class="row">
+      <%= render "categories/list", categories: @categories %>
+    </div>
+    <div class="row">
+      <%= render "categories/dropdown", categories: @categories %>
+    </div>
+
+    <%= render "sub_categories/list", categories: @categories %>
+
   </div>
+
+  <div class="wrapper">
+    <%= render "list", events: @hash %>
+  </div>
+
 </div>

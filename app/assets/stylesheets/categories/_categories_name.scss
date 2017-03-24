@@ -3,11 +3,19 @@
 }
 .category-name {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   color: $yellow;
-  padding: 3px 10px;
-  border-bottom: 5px solid $yellow;
+  opacity: 0.5;
+  padding: 0px 10px;
+  margin-bottom: 0px;
   transition: background 0.3s ease;
+  border-radius: 2px;
+}
+.category-name.active {
+  opacity: 1;
+  background: $yellow;
+  color: white;
+
 }
 .category-name:hover {
   opacity: 0.5;

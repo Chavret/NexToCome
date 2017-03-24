@@ -1,0 +1,30 @@
+<% categories.each do |category| %>
+
+  <div id="<%= category.name.delete(' ') %>", class="col-xs-2 col-half-offset category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
+  <i id="arrow-<%= category.name.delete(' ') %>", class="fa fa-angle-double-up"></i>
+  </div>
+
+ <% content_for(:js) do %>
+
+    <script type="text/javascript" >
+
+      $(document).ready(function(){
+        $("#<%= category.name.delete(' ') %>").hover(
+          function(event) {
+            $("#show-<%= category.name.delete(' ') %>").toggleClass("hide");
+            $("#arrow-<%= category.name.delete(' ') %>").toggleClass(".fa fa-angle-double-up").toggleClass(".fa fa-angle-double-down");
+          }
+        );
+        $("#show-<%= category.name.delete(' ') %>").hover(
+          function(event) {
+            $(this).toggleClass("hide");
+            $("#arrow-<%= category.name.delete(' ') %>").toggleClass(".fa fa-angle-double-up").toggleClass(".fa fa-angle-double-down");
+          }
+        );
+      });
+
+    </script>
+
+  <% end %>
+
+<% end %>
