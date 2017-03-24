@@ -8,6 +8,7 @@
     background-color: white;
     width: calc(100%/7 - 4px);
     height: calc(100vh - 70px); // navbar
+    overflow:scroll;
     display:inline-block;
     vertical-align:top;
     white-space:initial;
