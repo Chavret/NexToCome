@@ -12,15 +12,17 @@
 }
 
 .title-login {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: lighter;
-  color: $red;
+  color: $dark-blue;
   margin-bottom: 20px;
-  margin-top: 23px;
+}
+.title-login span {
+  font-size: 20px;
 }
 
 .remember {
-  color: white;
+  color: $dark-blue;
 }
 
 .checkbox {

@@ -1,25 +1,23 @@
-
-
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%), url('<%= image_path "background.jpg" %>');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(241, 248, 253, 0.2) 0%,rgba(241, 248, 253, 0.3) 10%, rgba(241, 248, 253, 0.9) 30%,rgba(241, 248, 253, 0.95) 70%, rgba(241, 248, 253, 0.5) 100%, rgba(241, 248, 253, 0.3) 70%), url('<%= image_path "background.jpeg" %>')">
   <div class="banner-content">
     <div class="container">
       <div class="rows">
         <div class="col-xs-12 col-md-4 col-md-offset-4 text-center">
           <div class="">
-            <div class="">Welcome to ComingUp!</div>
+            <div class="title-login">Ravi de vous retrouver ! <br> </div>
               <div class = "login-content">
                 <%= render "devise/shared/links" %>
-                  <div class= "remember">Or you can sign in</div>
+                  <div class= "remember">vous pouvez vous connecter directement</div>
                 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="form-inputs">
-                    <%= f.input :email, placeholder: "joël.robuchon@gmail.com", label: false, required: false, autofocus: true %>
-                    <%= f.input :password, placeholder: "Enter your password", label: false, required: false %>
+                    <%= f.input :email, placeholder: "myemail@gmail.com", label: false, required: false, autofocus: true %>
+                    <%= f.input :password, placeholder: "my password", label: false, required: false %>
                     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                    <%= f.button :submit, "Connexion",  :class => "btn-yellow long" %>
+                  </div>
+                  <div class="">
                   </div>
                   <%= render "devise/shared/signupandpassword" %>
-                  <div class="form-actions">
-                    <%= f.button :submit, "Log in" %>
-                  </div>
                 <% end %>
               </div>
           </div>

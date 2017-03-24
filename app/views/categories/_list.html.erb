@@ -1,6 +1,6 @@
 <% categories.each do |category| %>
 
-  <%= link_to events_path(category_filter_params(category.name)) do %>
+  <%= link_to events_path(category_filter_params(category.name)), remote: true do %>
 
     <div class="col-xs-2 col-half-offset category-name <%= 'active' if @selected_categories.include?(category.name) %>">
         <%= category.name %>

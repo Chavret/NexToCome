@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get 'admin', to: 'events#admin'
-  root to: 'events#index'
+  # root to: 'events#index'
+  root to: 'pages#home'
 
   resources :events
 
