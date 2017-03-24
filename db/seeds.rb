@@ -88,38 +88,21 @@ vacances = SubCategory.create!(name: "Vacances", category_id: viepratique.id)
 fetesetrangeres = SubCategory.create!(name: "Fêtes étrangères", category_id: viepratique.id)
 jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepratique.id)
 
-n = 0
 
-20.times  do
-  date = rand(1..14).days.from_now.to_date
-  rating = rand(0..5)
-  sub_category = SubCategory.all.sample
-  headline = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah"
-  n += 1
-
-  Event.create!({
-    occurs_at:         date,
-    headline:          headline + n.to_s,
-    headline_initial:  headline + n.to_s,
-    sub_category:      sub_category,
-    rating:            rating,
-    source:            "www.blah.com"
-  })
-end
 require 'csv'
 
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
-filepath    = File.join(__dir__, 'ComingUpDataCSV.csv')
+filepath    = File.join(__dir__, 'ComingUpDataCSV2.csv')
 
 CSV.foreach(filepath, csv_options) do |row|
   if SubCategory.exists?(name: row[8])
-    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
+    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], description: row[7])
     sub_cat = SubCategory.where(name: row[8].to_s).first
     event.sub_category = sub_cat
-    event.status = "Pending"
+    event.status = "Valid"
     event.save
   else
-    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: row[6], description: row[7])
+    event = Event.create!(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], status: "Pending", description: row[7])
   end
 end
 
