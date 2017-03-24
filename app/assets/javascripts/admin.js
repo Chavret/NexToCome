@@ -7,7 +7,7 @@ $(document).ready(function() {
     }else {
       $(".new_form").slideUp();
     }
-  });
+    });
 
   $(".events_admin").on("click", function(e) {
     var index = $(".events_admin").parent().index(this);

@@ -1,0 +1,24 @@
+var hash = $("<%= j render 'events/list', events: @hash%>").hide();
+$('.wrapper').html(hash);
+hash.slideDown();
+
+var categories = $("<%= j render 'categories/list', categories: @categories %>");
+var categories_dd = $("<%= j render 'categories/dropdown', categories: @categories %>");
+var sub_categories = $("<%= j render 'sub_categories/list', categories: @categories %>");
+
+$('.category-bar').html(categories);
+categories_dd.slideDown();
+
+$('.category-bar-dd').html(categories_dd);
+categories.slideDown();
+
+$('.sub-category-bar').html(sub_categories);
+sub_categories.slideDown();
+  // Create a paragraph for the new review. But hide it.
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  // Show the new review with an animation!
+  // Reset the form
+
+
+
+
