@@ -88,7 +88,7 @@ vacances = SubCategory.create!(name: "Vacances", category_id: viepratique.id)
 fetesetrangeres = SubCategory.create!(name: "Fêtes étrangères", category_id: viepratique.id)
 jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepratique.id)
 
-n = 0
+
 require 'csv'
 
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
