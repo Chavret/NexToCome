@@ -1,6 +1,6 @@
 <% categories.each do |category| %>
 
-  <div id="show-<%= category.name.delete(' ') %>" class="row hide">
+  <div id="show-<%= category.name.delete(' ') %>" class="row hide dropdown-border">
 
     <% category.sub_categories.each do |sub_category| %>
 
