@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "pundit"
 gem 'kaminari'
+gem 'sidekiq'
+gem 'sidekiq-failures'
 
 gem 'nokogiri'
 source "https://rails-assets.org" do
