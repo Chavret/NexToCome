@@ -20,12 +20,9 @@ class LequipeJob < ApplicationJob
     html_doc = Nokogiri::HTML(html_file)
 
     html_doc.search('.bb-color').each do |element|
-    p element.xpath('preceding-sibling::h2').last.text
-    p date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text)
     title = [element.search('.equipeDom').text, element.search('.equipeExt').text, element.search('.score').text].join(" - ")
 
-    if top_teams.include?(title.split(" "))
-      p "true"
+    if top_teams & title.split != []
     #create event only if included in top selection: it's still never validating
 
       event = Event.new(
@@ -35,7 +32,7 @@ class LequipeJob < ApplicationJob
               sub_category_id: SubCategory.find_by(name: 'Football'),
               occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text
               ))
-      p event
+      p event.headline
     end
 
     end
