@@ -10,19 +10,14 @@
       $(document).ready(function(){
         $("#<%= category.name.delete(' ') %>").hover(
           function(event) {
-            $("#show-<%= category.name.delete(' ') %>").removeClass("hide");
-          },
-          function(event) {
-            $("#show-<%= category.name.delete(' ') %>").addClass("hide");
+            $("#show-<%= category.name.delete(' ') %>").toggleClass("hide");
           }
         );
         $("#show-<%= category.name.delete(' ') %>").hover(
           function(event) {
-            $(this).removeClass("hide");
-          },
-          function(event) {
-            $(this).addClass("hide");
+            $(this).toggleClass("hide");
           }
+
         );
       });
 

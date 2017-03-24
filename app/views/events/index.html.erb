@@ -14,15 +14,15 @@
       <% end %>
     </div>
 
-    <div class="row">
+    <div class="row category-bar">
       <%= render "categories/list", categories: @categories %>
     </div>
-    <div class="row">
+    <div class="row category-bar-dd ">
       <%= render "categories/dropdown", categories: @categories %>
     </div>
-
-    <%= render "sub_categories/list", categories: @categories %>
-
+    <div class="sub-category-bar">
+      <%= render "sub_categories/list", categories: @categories %>
+    </div>
   </div>
 
   <div class="wrapper">

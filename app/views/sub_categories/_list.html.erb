@@ -4,7 +4,7 @@
 
     <% category.sub_categories.each do |sub_category| %>
 
-      <%= link_to events_path(sub_category_filter_params(sub_category.name)) do %>
+      <%= link_to events_path(sub_category_filter_params(sub_category.name)), remote: true do %>
         <div class="col-xs-2 col-half-offset sub_category-name <%= 'active' if @selected_sub_categories.include?(sub_category.name) %>">
             <%= sub_category.name %>
         </div>
