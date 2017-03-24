@@ -21,7 +21,7 @@ class AllocineJob < ApplicationJob
 
 
   def allocine_week_scraper(html_file)
-    categorie = Category.find_by_name('Economie')
+    categorie = Category.find_by_name('Culture')
     html_doc = Nokogiri::HTML(html_file)
 
     html_doc.search('.card-entity-list').each do |element|
@@ -36,20 +36,34 @@ class AllocineJob < ApplicationJob
             category: categorie,
             sub_category_id: '22',
             description: seances_num,
-            occurs_at: '22 avril 2017'
+            occurs_at: date_translater(element.search('.date').text)
             )
-          p element.search('.date').text
-          p event.headline
-          p event.valid?
-          if event.headline == "Les Schtroumpfs et le village perdu"
-            binding.pry
-          end
-          p event.errors.full_messages
-          p event.save
+          event.save
           end
       end
     end
-end
+  end
+
+
+  def date_translater(french_date)
+     array = french_date.split(/\W+/)
+     translation = {
+      janvier: 'January',
+      fevrier: 'February',
+      mars: 'March',
+      avril: 'April',
+      mai: 'May',
+      juin: "June",
+      juillet: 'July',
+      aout: 'August',
+      septembre: 'September',
+      octobre: 'October',
+      novembre: 'November',
+      decembre: 'December'
+    }
+      new_date = [array[0], translation[array[1].to_sym], array[2]].join(' ')
+
+  end
 
 
 #faire le scraper pour un mois avec une condition "est ce que ça existe déjà ?"
