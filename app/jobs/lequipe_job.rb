@@ -8,6 +8,8 @@ class LequipeJob < ApplicationJob
 
   def perform
     html_file = open("http://www.lequipe.fr/Football/FootballResultat54952.html")
+    classement = open("http://www.lequipe.fr/Football/ligue-1-classement.html")
+    top_selection(classement)
     lequipe_ligue1(html_file)
 
     # Do something later
@@ -35,6 +37,16 @@ class LequipeJob < ApplicationJob
     end
   end
 
+  def top_selection(html_file)
+    top_to_take = "5"
+    html_doc = Nokogiri::HTML(html_file)
+    html_doc.search('.js-tr-hover').each do |team|
+    p team.search('.team-label').text
+
+    break if team.search('.rang').text == top_to_take
+   end
+  end
+
   def date_translater_lequipe(french_date)
      array = french_date.split(/\W+/)
      array.delete_at(0)
@@ -57,3 +69,6 @@ class LequipeJob < ApplicationJob
 
   end
 end
+
+
+Event.all
