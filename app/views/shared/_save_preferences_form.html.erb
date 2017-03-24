@@ -1,0 +1,9 @@
+<%= form_tag save_filters_preferences_path, method: :post do %>
+  <% selected_categories.each do |category_name| %>
+    <%= hidden_field_tag "categories[]", category_name %>
+  <% end %>
+  <% selected_sub_categories.each do |sub_category_name| %>
+    <%= hidden_field_tag "sub_categories[]", sub_category_name %>
+  <% end %>
+  <%= submit_tag "Sauvegarder la sélection", :class => "btn-yellow" %>
+<% end %>
