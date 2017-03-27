@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 
-class AllocineJob < ApplicationJob
+class MeteoJob < ApplicationJob
   queue_as :default
 
   def perform
