@@ -11,7 +11,9 @@
             <div class="description hide"><%= event.description %></div>
           <% end %>
 
-           <div class="fb-share-button" data-href="http://www.coming-up.fr/events/992" data-layout="icon" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.coming-up.fr%2Fevents%2F#{event.id}&amp;src=sdkpreparse">Share</a></div>
+           <div class="fb-share-button"
+           data-href="http://www.coming-up.fr/events/<%= event.id %>" data-layout="icon" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank"
+           href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.coming-up.fr%2Fevents%2F<%= event.id %>&amp;src=sdkpreparse">Share</a></div>
 
         </div>
       <% end %>
