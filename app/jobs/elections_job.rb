@@ -35,3 +35,5 @@ class ElectionsJob < ApplicationJob
     end
 
 end
+
+end
