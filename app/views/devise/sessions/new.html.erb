@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(241, 248, 253, 0.2) 0%,rgba(241, 248, 253, 0.3) 10%, rgba(241, 248, 253, 0.9) 30%,rgba(241, 248, 253, 0.95) 70%, rgba(241, 248, 253, 0.5) 100%, rgba(241, 248, 253, 0.3) 70%), url('<%= image_path "background.jpeg" %>')">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(241, 248, 253, 0.2) 0%,rgba(241, 248, 253, 0.3) 10%, rgba(241, 248, 253, 0.9) 30%,rgba(241, 248, 253, 0.95) 70%, rgba(241, 248, 253, 0.5) 100%, rgba(241, 248, 253, 0.3) 70%), url('<%= image_path "background.jpg" %>')">
   <div class="banner-content">
     <div class="container">
       <div class="rows">
@@ -12,7 +12,7 @@
                   <div class="form-inputs">
                     <%= f.input :email, placeholder: "myemail@gmail.com", label: false, required: false, autofocus: true %>
                     <%= f.input :password, placeholder: "my password", label: false, required: false %>
-                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                   <!--  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
                     <%= f.button :submit, "Connexion",  :class => "btn-yellow long" %>
                   </div>
                   <div class="">

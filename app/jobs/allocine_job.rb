@@ -34,9 +34,10 @@ class AllocineJob < ApplicationJob
           event = Event.new(
             headline: element.search('.meta-title-link').text,
             category: categorie,
-            sub_category_id: '22',
+            sub_category: SubCategory.find_by(name: 'Cinéma'),
             description: seances_num,
-            occurs_at: date_translater(element.search('.date').text)
+            occurs_at: date_translater(element.search('.date').text),
+            status: "Valid"
             )
           event.save
           end

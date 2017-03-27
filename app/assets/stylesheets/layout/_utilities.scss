@@ -11,13 +11,12 @@
 }
 
 // Backgrounds
-.bg-blue {
-  background: $light-blue;
-}
+// .bg-blue {
+//   background: $light-blue;
+// }
 .bg-dark-blue {
   background: $dark-blue;
 }
-
 
 // Font
 body {
@@ -32,4 +31,10 @@ h5 {
 
 .dark-blue {
   color: $dark-blue;
+}
+a.fill-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
 }
