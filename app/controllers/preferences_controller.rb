@@ -51,7 +51,6 @@ def sync_calendar
 
         # send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
       end
-    end
   end
 
 
