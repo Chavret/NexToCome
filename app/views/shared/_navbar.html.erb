@@ -7,6 +7,10 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <div class="">
+      <%= render "shared/export" %>
+    </div>
+
     <!-- Button (call-to-action) -->
     <div class="save-filters-form-container">
       <%= render "shared/save_preferences_form", selected_categories: @selected_categories, selected_sub_categories: @selected_sub_categories %>

@@ -20,6 +20,7 @@ gem "pundit"
 gem 'kaminari'
 gem 'sidekiq'
 gem 'sidekiq-failures'
+gem 'icalendar'
 
 gem 'nokogiri'
 source "https://rails-assets.org" do
