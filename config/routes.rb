@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :preferences, only: [] do
     collection do
       post :save_filters
+      get :sync_calendar
     end
   end
 
