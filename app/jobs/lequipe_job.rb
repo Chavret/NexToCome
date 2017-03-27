@@ -29,7 +29,7 @@ class LequipeJob < ApplicationJob
               headline: title,
               headline_initial: title,
               category: categorie,
-              sub_category_id: SubCategory.find_by(name: 'Football'),
+              sub_category: SubCategory.find_by(name: 'Football'),
               occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text),
               status: "Valid"
               )
