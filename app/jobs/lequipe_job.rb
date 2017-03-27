@@ -30,16 +30,19 @@ class LequipeJob < ApplicationJob
               headline_initial: title,
               category: categorie,
               sub_category_id: SubCategory.find_by(name: 'Football'),
-              occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text
+              occurs_at: date_translater_lequipe(element.xpath('preceding-sibling::h2').last.text,
+              status: "Valid"
               ))
       p event.headline
+      p event.occurs_at
+      p event.save
     end
 
     end
   end
 
   def top_selection(html_file)
-    top_to_take = "5"
+    top_to_take = "3"
     top_teams = []
     html_doc = Nokogiri::HTML(html_file)
     html_doc.search('.js-tr-hover').each do |team|
@@ -73,5 +76,3 @@ class LequipeJob < ApplicationJob
   end
 end
 
-
-Event.all
