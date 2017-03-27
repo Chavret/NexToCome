@@ -23,6 +23,7 @@ class ExpositionsJob < ApplicationJob
       headline_initial: title,
       sub_category_name: "Beaux-Arts",
       )
+    end
   end
 
 end
