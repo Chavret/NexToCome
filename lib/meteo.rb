@@ -1,4 +1,3 @@
-
 require 'json'
 require 'csv'
 require 'open-uri'
