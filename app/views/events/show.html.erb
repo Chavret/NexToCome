@@ -1,2 +1,11 @@
+<wrapper class="text-center bg-blue banner">
+
+  <h1><%= @event.sub_category.name %></h1>
+  <br><br>
+  <h3><%= @event.headline %></h3>
+
+</wrapper>
+
+
 <% content_for :meta_title, @event.headline %>
 <% content_for :meta_description, @event.sub_category.name + @event.headline %>
