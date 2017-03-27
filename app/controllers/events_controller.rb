@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :destroy, :update]
+  before_action :set_event, only: [:edit, :destroy, :update, :show]
   skip_after_action :verify_authorized, only: [:admin]
 
 
@@ -81,10 +81,10 @@ class EventsController < ApplicationController
 
   end
 
-  def destroy
+  def show
   end
 
-  def show
+  def destroy
   end
 
   private
