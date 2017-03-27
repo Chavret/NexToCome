@@ -2,11 +2,10 @@ require 'json'
 require 'open-uri'
 
 
-class AllocineJob < ApplicationJob
+class MeteoJob < ApplicationJob
   queue_as :default
 
-  def perform
-  # Do something later
+  def perform # Do something later
   # latitude = 48.866667
   # longitude = 2.333333
   # url = 'https://api.darksky.net/forecast/92d8f636e4c7092e7f955e1b3b4ff48a/#{latitude},#{longitude}'
@@ -36,11 +35,11 @@ class AllocineJob < ApplicationJob
       description2 = info["daily"]["data"][i]["summary"].delete(".")
       description3 =info["daily"]["data"][i]["temperatureMin"].round
       description4 =info["daily"]["data"][i]["temperatureMax"].round
-      event = Event.new = {
+      event = Event.new(
           occurs_at: date,
           headline_initial: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
           sub_category_name: "Météo",
-          }
+          )
       event.save
       i +=1
     end
