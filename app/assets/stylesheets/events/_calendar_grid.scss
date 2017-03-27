@@ -5,7 +5,7 @@
 }
 .column {
     border-top: 1px solid $yellow;
-    background-color: white;
+    background-color: $light-blue;
     width: calc(100%/7 - 4px);
     height: calc(100vh - 70px); // navbar
     overflow:scroll;
@@ -21,4 +21,13 @@
 }
 .column h5 {
   margin-bottom: 0px;
+}
+#event-div {
+  background-color: white;
+  padding: 5px 2px;
+  // padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
