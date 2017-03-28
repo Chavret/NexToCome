@@ -4,8 +4,8 @@
     <h4><%= date.strftime("%A %e %B") %></h4>
 
     <!-- Meteo Symbol -->
-    <% unless meteo_events[date].first.nil? %>
-      <% image_url = meteo_events[date].first.description.gsub("-","_") %>
+    <% unless @meteo_hash[date].first.nil? %>
+      <% image_url = @meteo_hash[date].first.description.gsub("-","_") %>
       <div class="meteo-symbol-div" ><%= image_tag image_url, id: "meteo-symbol" %></div>
     <% end %>
 
