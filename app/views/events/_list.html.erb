@@ -4,6 +4,19 @@
     <h4><%= date.strftime("%A %e %B") %></h4>
     <div class="jours" >
       <% events.each do |event| %>
+
+ <!--    <% case c = event.category %>
+      <% when c = event.category %>
+        <% color = "" %>
+      <% when c = event.category %>
+        <% color = "" %>
+      <% when c = event.category %>
+        <% color = "" %> -->
+
+
+
+
+
         <div id="event-div">
           <h5><%= event.sub_category.name %></h5>
           <p><%= event.headline %></p>
@@ -16,8 +29,14 @@
            href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.coming-up.fr%2Fevents%2F<%= event.id %>&amp;src=sdkpreparse">Share</a></div>
 
         </div>
+
+      <% end %>
+
+
       <% end %>
     </div>
   </div>
 <% end %>
+
+
 
