@@ -78,6 +78,7 @@ GEM
       activesupport (>= 4.1.0)
     hashie (3.5.5)
     i18n (0.8.1)
+    icalendar (2.4.1)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
@@ -243,6 +244,7 @@ DEPENDENCIES
   devise
   figaro
   font-awesome-sass
+  icalendar
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

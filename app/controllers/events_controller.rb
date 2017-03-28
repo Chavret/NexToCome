@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :destroy, :update]
-  skip_before_action :authenticate_user!, only: :show
-  skip_after_action :verify_authorized, only: [:admin, :show]
+  before_action :set_event, only: [:edit, :destroy, :update, :show]
+  skip_after_action :verify_authorized, only: [:admin, :sync_calendar]
+  skip_before_action :authenticate_user!, only: :sync_calendar
 
 
   def new
@@ -40,6 +40,16 @@ class EventsController < ApplicationController
 
   def index
 
+    selection_of_preferences(current_user)
+
+    respond_to do |format|
+      format.html {}
+      format.js  # <-- will render `app/views/events/index.js.erb`
+    end
+
+  end
+
+  def selection_of_preferences(current_user)
     @categories = Category.all
 
     categories_preferences = current_user.find_liked_items(votable_type: 'Category')
@@ -52,6 +62,7 @@ class EventsController < ApplicationController
       all_sub_categorie_names = category.sub_categories.pluck(:name)
 
       if (all_sub_categorie_names & @selected_sub_categories).count == 0
+        #if no sub category selected, take the whole category
         @selected_sub_categories += all_sub_categorie_names
       end
     end
@@ -75,11 +86,6 @@ class EventsController < ApplicationController
       @hash[date].flatten!
     end
 
-    respond_to do |format|
-      format.html {}
-      format.js  # <-- will render `app/views/events/index.js.erb`
-    end
-
   end
 
   def show
@@ -88,6 +94,50 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def sync_calendar
+
+
+    user = User.where(calendar_token: params[:token]).first
+    return redirect_to(root_path) unless user
+
+    selection_of_preferences(user)
+
+    respond_to do |format|
+      format.html
+      format.ics do
+        cal = Icalendar::Calendar.new
+        filename = "Your coming up calendar"
+        @hash.each do |date, events|
+          events.each do |event|
+              happening = Icalendar::Event.new
+              happening.dtstart = date
+              happening.dtend = date
+              happening.summary = event.headline
+              cal.add_event(happening)
+            end
+          end
+
+        cal.publish
+        #apparition du pop up avec "lien intégré qui dépend du cal "
+
+        render :text =>  cal.to_ical
+      end
+
+        #mettre un bouton a cote qui affiche une modal
+
+        #remote true sur bouton preferences
+
+
+
+        #faire une modal avec un lien
+
+        #cal unique pour chaque utilisateur
+        #si il existe déjà, update
+
+        # send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
+      end
   end
 
   private
@@ -109,4 +159,8 @@ class EventsController < ApplicationController
       :status)
 
   end
+
+
+
+
 end

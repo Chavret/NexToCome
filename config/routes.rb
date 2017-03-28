@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  get 'sync_calendar', to: 'events#sync_calendar'
   get 'admin', to: 'events#admin'
+
 
   root to: 'pages#home'
 
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   resources :preferences, only: [] do
     collection do
       post :save_filters
-      get :sync_calendar
+
     end
   end
 
