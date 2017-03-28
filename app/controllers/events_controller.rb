@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :destroy, :update, :show]
-  skip_after_action :verify_authorized, only: [:admin, :sync_calendar]
-  skip_before_action :authenticate_user!, only: :sync_calendar
+  before_action :set_event, only: [:edit, :destroy, :update]
+  skip_after_action :verify_authorized, only: [:admin, :sync_calendar, :show]
+  skip_before_action :authenticate_user!, only: [:sync_calendar, :show]
 
 
   def new_for_user
@@ -96,6 +96,8 @@ class EventsController < ApplicationController
   end
 
   def show
+     @event = Event.find(params[:id])
+    # No authorization cause not signed in
   end
 
   def destroy
@@ -157,8 +159,5 @@ class EventsController < ApplicationController
       :status)
 
   end
-
-
-
 
 end
