@@ -42,7 +42,7 @@ class MeteoJob < ApplicationJob
           headline_initial: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
           headline: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
           sub_category: SubCategory.find_by(name: 'Météo'),
-          status: "Pending"
+          status: "Valid"
           )
       p event
       p event.save!
