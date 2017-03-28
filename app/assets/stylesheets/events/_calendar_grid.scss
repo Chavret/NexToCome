@@ -32,6 +32,10 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   min-height: 100px;
   position: relative;
+  transition: all .2s ease-in-out;
+}
+#event-div:hover {
+  transform: scale(1.03);
 }
 #event-div p {
   padding: 5px;
