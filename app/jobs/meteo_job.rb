@@ -39,10 +39,11 @@ class MeteoJob < ApplicationJob
       description4 =info["daily"]["data"][i]["temperatureMax"].round
       event = Event.new(
           occurs_at: date,
-          headline_initial: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
+          headline_initial: "#{description2}, température de #{description3} à #{description4} degrés",
           headline: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
           sub_category: SubCategory.find_by(name: 'Météo'),
-          status: "Valid"
+          status: "Valid",
+          description: description1
           )
       p event
       p event.save!
