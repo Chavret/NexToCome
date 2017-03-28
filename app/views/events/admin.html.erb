@@ -2,6 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 text-center">
+        <%= link_to "Go Back to events", events_path, :class => "btn btn-primary margin-top-btn" %>
+      </div>
+      <div class="col-xs-12 text-center">
         <button class=" btn btn_create btn-primary">Create </button>
         <% if (policy(Event).create?) %>
           <div class="new_form">

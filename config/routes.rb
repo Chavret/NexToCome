@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'sync_calendar', to: 'events#sync_calendar'
   get 'admin', to: 'events#admin'
 
-
   root to: 'pages#home'
 
   resources :events

@@ -4,8 +4,13 @@
     <h3>ComingUp <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
   <% end %>
 
+
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <div>
+      <%= render 'events/new_user', event: Event.new %>
+    </div>
 
     <div class="">
       <%= render "shared/export" %>
