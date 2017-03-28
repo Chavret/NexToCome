@@ -112,12 +112,14 @@ class EventsController < ApplicationController
         @hash.each do |date, events|
           events.each do |event|
               happening = Icalendar::Event.new
-              happening.dtstart = date
-              happening.dtend = date
+              happening.dtstart = Icalendar::Values::DateOrDateTime.new(date)
+              happening.dtend = Icalendar::Values::DateOrDateTime.new(date).call
               happening.summary = event.headline
               cal.add_event(happening)
             end
           end
+
+          raise
 
         cal.publish
         #apparition du pop up avec "lien intégré qui dépend du cal "
