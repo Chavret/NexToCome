@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :destroy, :update, :show]
-  skip_after_action :verify_authorized, only: [:admin]
-
+  skip_after_action :verify_authorized, only: [:admin, :sync_calendar]
+  skip_before_action :authenticate_user!, only: :sync_calendar
 
   def new
     @event = authorize Event.new
@@ -94,9 +94,12 @@ class EventsController < ApplicationController
   end
 
   def sync_calendar
-    authorize Event.new # RODO
 
-    selection_of_preferences(current_user)
+
+    user = User.where(calendar_token: params[:token]).first
+    return redirect_to(root_path) unless user
+
+    selection_of_preferences(user)
 
     respond_to do |format|
       format.html
