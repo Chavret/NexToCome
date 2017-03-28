@@ -31,11 +31,14 @@ class EventseyeJob < ApplicationJob
       recurence =  element.search("td.mt:nth-child(2)").text.gsub(/\s+/, " ")
       unless (new_date.nil?  || info == "" || ville == "")
         event = Event.new(
-          occurs_at: Date.parse(new_date).strftime("%d %m %Y"),
+          occurs_at: Date.parse(new_date),
           headline_initial: "#{title} - #{info}",
-          sub_category_name: "Entreprises",
+          headline: title,
+          sub_category: SubCategory.find_by(name: 'Entreprises'),
+          # category: Category.find_by_name('Economie'),
+          status: "Pending"
           )
-        event.save
+        p event.save!
       end
     end
   end

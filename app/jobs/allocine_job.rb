@@ -39,7 +39,7 @@ class AllocineJob < ApplicationJob
             occurs_at: date_translater(element.search('.date').text),
             status: "Valid"
             )
-          event.save
+          p event.save
           end
       end
     end

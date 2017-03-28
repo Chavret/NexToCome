@@ -19,9 +19,12 @@ class PresidenceJob < ApplicationJob
       event = Event.new(
       occurs_at: date,
       headline_initial: title,
-      sub_category_name: "Politique",
+      headline: title,
+      sub_category: SubCategory.find_by(name: 'Politique'),
+      # category: Category.find_by_name('Société'),
+      status: "Pending"
       )
-      event.save
+      p event.save!
     end
   end
 

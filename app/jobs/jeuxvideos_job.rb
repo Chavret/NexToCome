@@ -20,9 +20,12 @@ class JeuxvideosJob < ApplicationJob
         event = Event.new(
         occurs_at: date,
         headline_initial: title,
-        sub_category_name: "Jeux vidéos",
+        headline: title,
+        sub_category: SubCategory.find_by(name: 'Jeux vidéos'),
+        # category: Category.find_by_name('Culture'),
+        status: "Pending"
         )
-      event.save
+      p event.save!
      end
    end
 

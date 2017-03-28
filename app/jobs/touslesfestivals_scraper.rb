@@ -23,10 +23,13 @@ class TouslesfestivalsJob < ApplicationJob
     event = Event.new(
         occurs_at: date,
         headline_initial: "Début du festival #{title} de #{city}",
-        sub_category_name: "Musique",
         description: info,
+        headline: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
+        sub_category: SubCategory.find_by(name: 'Musique'),
+        status: "Pending",
+        # category: Category.find_by_name('Culture')
         )
-    event.save
+    p event.save!
     end
   end
 

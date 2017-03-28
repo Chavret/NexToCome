@@ -19,7 +19,7 @@ class ElectionsJob < ApplicationJob
     until i == total - 1
       country = info["aaData"][i][1][0]
       category = info["aaData"][i][2][0]
-      date = Date.parse(info["aaData"][i][3].gsub("-", "/")).strftime("%d %m %Y")
+      date = Date.parse(info["aaData"][i][3])
       status = info["aaData"][i][4]
       title = info["aaData"][i][6]
       type = info["aaData"][i][7]
@@ -27,9 +27,14 @@ class ElectionsJob < ApplicationJob
         event = Event.new(
           occurs_at: date,
           headline_initial: "#{title} of #{country}",
-          sub_category_name: "Elections",
+          headline: title,
+          # sub_category: SubCategory.find_by(name: 'Elections'),
+          # category: Category.find_by_name('Vie pratique'),
+          sub_category: SubCategory.find_by(name: 'Elections'),
+          status: "Pending"
           )
-        event.save
+        p event
+        p event.save!
       end
       i +=1
     end

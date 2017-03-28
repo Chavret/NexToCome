@@ -1,5 +1,6 @@
 require 'json'
 require 'open-uri'
+require 'date'
 
 
 class MeteoJob < ApplicationJob
@@ -15,22 +16,23 @@ class MeteoJob < ApplicationJob
   end
 
   def meteo_scraper(meteo_serialized)
-    corresponding_icons = { "clear-day" => "clear_day.svg",
-                        "clear-night" => "clear_night.svg",
-                        "rain" => "rain.svg",
-                        "snow" => "snow.svg",
-                        "sleet" => "sleet.svg",
-                        "wind" => "wind.svg",
-                        "fog" => "fog.svg",
-                        "cloudy" => "cloudy.svg",
-                        "partly-cloudy-day" => "partly_cloudy_day.svg",
-                        "sun" => "sun.svg",
-                        "partly-cloudy-night" => "partly_cloudy_night.svg" }
+    # corresponding_icons = { "clear-day" => "clear_day.svg",
+    #                     "clear-night" => "clear_night.svg",
+    #                     "rain" => "rain.svg",
+    #                     "snow" => "snow.svg",
+    #                     "sleet" => "sleet.svg",
+    #                     "wind" => "wind.svg",
+    #                     "fog" => "fog.svg",
+    #                     "cloudy" => "cloudy.svg",
+    #                     "partly-cloudy-day" => "partly_cloudy_day.svg",
+    #                     "sun" => "sun.svg",
+    #                     "partly-cloudy-night" => "partly_cloudy_night.svg" }
     info = JSON.parse(meteo_serialized)
     current_time = info["currently"]["time"]
     i = 0
     until i == 8
-      date = Time.at(info["daily"]["data"][i]["time"]).strftime("%d %m %Y")
+      date = Time.at(info["daily"]["data"][i]["time"])
+      p date.class
       description1 = info["daily"]["data"][i]["icon"]
       description2 = info["daily"]["data"][i]["summary"].delete(".")
       description3 =info["daily"]["data"][i]["temperatureMin"].round
@@ -38,9 +40,12 @@ class MeteoJob < ApplicationJob
       event = Event.new(
           occurs_at: date,
           headline_initial: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
-          sub_category_name: "Météo",
+          headline: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
+          sub_category: SubCategory.find_by(name: 'Météo'),
+          status: "Pending"
           )
-      event.save
+      p event
+      p event.save!
       i +=1
     end
   end

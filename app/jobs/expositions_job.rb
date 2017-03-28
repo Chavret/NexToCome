@@ -21,8 +21,11 @@ class ExpositionsJob < ApplicationJob
     event = Event.new(
       occurs_at: date2,
       headline_initial: title,
-      sub_category_name: "Beaux-Arts",
+      headline: title,
+      sub_category: SubCategory.find_by(name: 'Beaux-arts'),
+      status: "Pending"
       )
+    p event.save!
     end
   end
 
