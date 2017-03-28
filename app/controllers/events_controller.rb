@@ -94,7 +94,7 @@ class EventsController < ApplicationController
     end
 
     # Meteo Symbols
-    meteo_events = Event.joins(:sub_category).where(sub_categories: { name: 'Football'})
+    meteo_events = Event.joins(:sub_category).where(sub_categories: { name: 'Météo'})
     @meteo_hash = {}
     date = Time.now.to_date - 1.days
     30.times do

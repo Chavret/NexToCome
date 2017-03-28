@@ -30,7 +30,7 @@ class MeteoJob < ApplicationJob
     info = JSON.parse(meteo_serialized)
     current_time = info["currently"]["time"]
     i = 0
-    until i == 30
+    until i == 8
       date = Time.at(info["daily"]["data"][i]["time"])
       p date.class
       description1 = info["daily"]["data"][i]["icon"]
