@@ -54,6 +54,8 @@ class EventsController < ApplicationController
     categories_preferences = current_user.find_liked_items(votable_type: 'Category')
     sub_categories_preferences = current_user.find_liked_items(votable_type: 'SubCategory')
 
+
+
     @selected_categories = params[:categories].presence || categories_preferences.pluck(:name) || Category.pluck(:name)
     @selected_sub_categories = params[:sub_categories].presence || sub_categories_preferences.pluck(:name) || SubCategory.pluck(:name)
     # Including all sub categories of any selected category with no selected sub category
@@ -101,6 +103,8 @@ class EventsController < ApplicationController
 
     selection_of_preferences(user)
 
+
+
     respond_to do |format|
       format.html
       format.ics do
@@ -109,17 +113,13 @@ class EventsController < ApplicationController
         @hash.each do |date, events|
           events.each do |event|
               happening = Icalendar::Event.new
-              happening.dtstart = date
-              happening.dtstart.ical_param "VALUE", "DATE"
-              happening.dtend = date
-              happening.dtend.ical_param "VALUE", "DATE"
+              happening.dtstart = DateTime.civil(date.year, date.month, date.day, 00, 00)
+              happening.dtend =  DateTime.civil(date.year, date.month, date.next_day.day, 00, 00)
               happening.summary = event.headline
               cal.add_event(happening)
             end
           end
-
         cal.publish
-        #apparition du pop up avec "lien intégré qui dépend du cal "
 
         render :text =>  cal.to_ical
       end
