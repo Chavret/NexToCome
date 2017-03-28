@@ -20,4 +20,8 @@ class EventPolicy < ApplicationPolicy
   def admin?
     user.admin?
   end
+
+  def sync_calendar?
+    true # FIXME
+  end
 end

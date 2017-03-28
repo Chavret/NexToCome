@@ -46,6 +46,7 @@ class MeteoJob < ApplicationJob
           )
       p event
       p event.save!
+
       i +=1
     end
   end

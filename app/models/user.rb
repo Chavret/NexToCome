@@ -6,7 +6,10 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   validates :email, presence: true, uniqueness: true
+  validates :calendar_token, presence: true, uniqueness: true
   # validates :newsletter
+
+  before_validation :generate_calendar_token, on: :create
 
   acts_as_voter
   #to be able to select categories
@@ -47,4 +50,13 @@ end
 
     return user
   end
+
+
+  def generate_calendar_token
+    self.calendar_token = loop do
+      random_code = SecureRandom.base64(10)
+      break random_code unless User.exists?(calendar_token: random_code)
+    end
+  end
+
 end
