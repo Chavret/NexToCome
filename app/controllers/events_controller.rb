@@ -113,7 +113,7 @@ class EventsController < ApplicationController
           events.each do |event|
               happening = Icalendar::Event.new
               happening.dtstart = Icalendar::Values::DateOrDateTime.new(date)
-              happening.dtend = Icalendar::Values::DateOrDateTime.new(date).call
+              happening.dtend = Icalendar::Values::DateOrDateTime.new(date+1.day).call
               happening.summary = event.headline
               cal.add_event(happening)
             end
