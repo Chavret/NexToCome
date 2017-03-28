@@ -21,7 +21,8 @@
 }
 .column h5 {
   margin: 0px;
-  color: white;
+  // color: white;
+  letter-spacing: 0.05em;
 }
 #event-div {
   background-color: white;
@@ -32,6 +33,10 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   min-height: 100px;
   position: relative;
+  transition: all .2s ease-in-out;
+}
+#event-div:hover {
+  transform: scale(1.03);
 }
 #event-div p {
   padding: 5px;
@@ -58,23 +63,33 @@
 
 .bar-economie {
   color: white;
-  background-color: $economie;
+  border-right: 5px solid $economie;
+  background: $economie ;
+  // color: $economie;
 }
 .bar-societe {
   color: white;
-  background-color: $societe;
+  border-right: 5px solid $societe;
+  background: $societe ;
+  // color: $societe;
 }
 .bar-viepratique {
   color: white;
-  background-color: $viepratique;
+  border-right: 5px solid $viepratique;
+  background: $viepratique ;
+  // color: $viepratique;
 }
 .bar-sport {
   color: white;
-  background-color: $sport;
+  border-right: 5px solid $sport;
+  background: $sport ;
+  // color: $sport;
 }
 .bar-culture {
   color: white;
-  background-color: $culture;
+  border-right: 5px solid $culture;
+  background: $culture ;
+  // color: $culture;
 }
 
 .fb-share-button {

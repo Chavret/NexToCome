@@ -8,9 +8,6 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <div>
-      <%= render 'events/new_user', event: Event.new %>
-    </div>
 
     <div class="">
       <%= render "shared/export" %>
@@ -28,18 +25,32 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% avatar_url = current_user.picture_url || "http://cdn.patch.com/assets/contrib/images/placeholder-user-photo.png" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+
             <li>
-              <%= link_to root_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <%= link_to new_event_path, "data-toggle" => "modal", "data-target" => "#modal-window" do %>
+                <i class="fa fa-plus" aria-hidden="true"></i></i>
+                <%= t(".profile", default: " Ajouter une Actu") %>
               <% end %>
             </li>
+
+
+            <li>
+              <%= link_to "https://calendar.google.com/calendar/render?cid=#{sync_calendar_url(format: 'ics', token: current_user.calendar_token)}" do %>
+                <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                <%= t(".profile", default: " Exporter l'Agenda") %>
+              <% end %>
+            </li>
+
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <i class="fa fa-sign-out"></i>
+                <%= t(".sign_out", default: " Déconnexion") %>
               <% end %>
             </li>
+
           </ul>
         </div>
       </div>
@@ -69,3 +80,31 @@
   </div>
 </div>
 
+<!-- Modal -->
+
+<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Ajouter une Actu</h4>
+      </div>
+
+      <div class="modal-body">
+
+         <%= simple_form_for( Event.new ) do |form| %>
+            <%= form.input :occurs_at, as: :string, label: "Quand ?", input_html: { class: 'datepicker', placeholder: "30/03/2017" } %>
+            <%= form.input :headline, label: "Quelle Actu souhaitez vous partager ?", placeholder: "Demo Day Batch #59 au Wagon " %>
+            <%= form.association :sub_category, label: "A quel sujet ?", prompt: "High-tech"  %>
+            <%= form.input :description, label: "Dites-nous en plus", placeholder: "Les 22 étudiants de la saison #59 pitcheront leurs projets, codés pendant les 10 derniers jours des 9 semaines du programme Full Stack. Attention ça va envoyer du lourd !" %>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-yellow" data-dismiss="modal">Retour</button>
+            <%= form.button :submit, label: "Name your Meal", placeholder: "50 Shades of Grains", class: "btn-yellow" %>
+          <% end %>
+        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+      </div>
+    </div>
+  </div>
+</div>
