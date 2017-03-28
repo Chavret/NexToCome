@@ -37,9 +37,6 @@
             </li>
 
 
-
-
-
             <li>
               <%= link_to "https://calendar.google.com/calendar/render?cid=#{sync_calendar_url(format: 'ics', token: current_user.calendar_token)}" do %>
                 <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
@@ -83,30 +80,31 @@
   </div>
 </div>
 
-<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal -->
 
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3 id="myModalLabel">New Event</h3>
-  </div>
-  <div class="modal-body">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 text-center grey-background">
-          <h1>Create New Event</h1>
-          <%= simple_form_for( Event.new ) do |form| %>
-            <%= form.input :occurs_at, as: :string, label: "Date: ", input_html: { class: 'datepicker' } %>
-            <%= form.input :headline %>
-            <%= form.association :sub_category %>
-            <%= form.input :description %>
-            <%= form.button :submit %>
+<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Ajouter une Actu</h4>
+      </div>
+
+      <div class="modal-body">
+
+         <%= simple_form_for( Event.new ) do |form| %>
+            <%= form.input :occurs_at, as: :string, label: "Quand ?", input_html: { class: 'datepicker', placeholder: "30/03/2017" } %>
+            <%= form.input :headline, label: "Quelle Actu souhaitez vous partager ?", placeholder: "Demo Day Batch #59 au Wagon " %>
+            <%= form.association :sub_category, label: "A quel sujet ?", prompt: "High-tech"  %>
+            <%= form.input :description, label: "Dites-nous en plus", placeholder: "Les 22 étudiants de la saison #59 pitcheront leurs projets, codés pendant les 10 derniers jours des 9 semaines du programme Full Stack. Attention ça va envoyer du lourd !" %>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-yellow" data-dismiss="modal">Retour</button>
+            <%= form.button :submit, label: "Name your Meal", placeholder: "50 Shades of Grains", class: "btn-yellow" %>
           <% end %>
-        </div>
+        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Submit</button>
   </div>
 </div>
