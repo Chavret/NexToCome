@@ -18,7 +18,7 @@ class PreferencesController < ApplicationController
       sub_category.liked_by current_user
     end
 
-    redirect_to sync_calendar_path
+    redirect_to events_path
   end
 
 
