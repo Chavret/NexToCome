@@ -2,7 +2,7 @@
 
   <div class="show bg-blue">
 
-    <h1><%= @event.occurs_at.strftime("%A %e %B") %></h1>
+    <h1><%= @event.occurs_at.strftime("%m/%d/%Y") %></h1>
     <h3><%= @event.headline %></h3>
     <h4>sources: <%= @event.source %></h4>
 
@@ -13,5 +13,5 @@
 </div>
 
 
-<% content_for :meta_title, @event.occurs_at.strftime("%a %e %B") + " - " + @event.headline %>
-<% content_for :meta_description, "Retrouvez toute l'actualité à venir sur ComingUp >> " + @event.sub_category.name + " - " + @event.occurs_at.strftime("%a %e %B") + " - " + @event.headline %>
+<% content_for :meta_title, @event.occurs_at.strftime("%m/%d/%Y") + " - " + @event.headline %>
+<% content_for :meta_description, "Retrouvez toute l'actualité à venir sur ComingUp >> \n" + @event.sub_category.name + " - " + @event.occurs_at.strftime("%a %e %B") + " - " + @event.headline %>
