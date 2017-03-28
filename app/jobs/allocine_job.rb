@@ -1,14 +1,10 @@
-
 require 'open-uri'
 require 'nokogiri'
-
 
 class AllocineJob < ApplicationJob
   queue_as :default
 
   def perform
-    # Do something later
-
     t = Time.now
     4.times do
     t += 7*24*60*60

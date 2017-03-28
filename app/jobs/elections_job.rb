@@ -28,8 +28,6 @@ class ElectionsJob < ApplicationJob
           occurs_at: date,
           headline_initial: "#{title} of #{country}",
           headline: title,
-          # sub_category: SubCategory.find_by(name: 'Elections'),
-          # category: Category.find_by_name('Vie pratique'),
           sub_category: SubCategory.find_by(name: 'Elections'),
           status: "Pending"
           )

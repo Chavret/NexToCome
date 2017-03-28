@@ -106,5 +106,7 @@ CSV.foreach(filepath, csv_options) do |row|
   end
 end
 
+User.create(email:"simonbaldeyrou@gmaiL.com", password:"secret", admin:true)
+
 puts "Seed OKAYYY"
 
