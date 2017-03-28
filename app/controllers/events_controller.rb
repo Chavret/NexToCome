@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   skip_after_action :verify_authorized, only: [:admin, :sync_calendar]
   skip_before_action :authenticate_user!, only: :sync_calendar
 
+
   def new_for_user
     @event = Event.new
     authorize @event
@@ -95,8 +96,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    # No authorization cause not signed in
   end
 
   def destroy
@@ -119,7 +118,9 @@ class EventsController < ApplicationController
           events.each do |event|
               happening = Icalendar::Event.new
               happening.dtstart = date
+              happening.dtstart.ical_param "VALUE", "DATE"
               happening.dtend = date
+              happening.dtend.ical_param "VALUE", "DATE"
               happening.summary = event.headline
               cal.add_event(happening)
             end
@@ -131,16 +132,7 @@ class EventsController < ApplicationController
         render :text =>  cal.to_ical
       end
 
-        #mettre un bouton a cote qui affiche une modal
 
-        #remote true sur bouton preferences
-
-
-
-        #faire une modal avec un lien
-
-        #cal unique pour chaque utilisateur
-        #si il existe déjà, update
 
         # send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
       end

@@ -70,6 +70,7 @@
   font-weight: lighter;
   border: 1px solid $yellow;
   margin: 5px;
+  text-decoration:none;
 }
 .btn-yellow:hover {
   opacity: 1;
@@ -113,4 +114,14 @@
   height: 80px;
   border-radius: 25%;
   text-align: center;
+}
+
+.export_link {
+  color: $yellow;
+  text-decoration:none;
+}
+
+.export_link:hover {
+  color: white;
+  text-decoration:none;
 }
