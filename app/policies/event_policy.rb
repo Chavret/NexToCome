@@ -9,12 +9,16 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
+  def new_for_user?
+    true
+  end
+
   def update?
     user.admin?
   end
 
   def create?
-    user.admin?
+    true
   end
 
   def admin?

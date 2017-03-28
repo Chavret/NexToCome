@@ -3,6 +3,14 @@ class EventsController < ApplicationController
   skip_after_action :verify_authorized, only: [:admin, :sync_calendar]
   skip_before_action :authenticate_user!, only: :sync_calendar
 
+
+  def new_for_user
+    @event = Event.new
+    authorize @event
+    params[:rating] = 0
+    params[:status] = "Pending"
+  end
+
   def new
     @event = authorize Event.new
   end
@@ -11,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.save
     authorize @event
-    redirect_to admin_path
+    redirect_to events_path
   end
 
   def update
