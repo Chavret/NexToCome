@@ -40,7 +40,7 @@ class MeteoJob < ApplicationJob
       event = Event.new(
           occurs_at: date,
           headline_initial: "#{description2}, température de #{description3} à #{description4} degrés",
-          headline: "#{description1} - #{description2}, température de #{description3} à #{description4} degrés",
+          headline: "#{description2}, température de #{description3} à #{description4} degrés",
           sub_category: SubCategory.find_by(name: 'Météo'),
           status: "Valid",
           description: description1
