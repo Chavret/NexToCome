@@ -17,9 +17,13 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    authorize @event
-    redirect_to events_path
+    if @event.save
+      authorize @event
+      flash[:notice] = "Event successfully created"
+      redirect_to events_path
+    else
+      render 'index'
+    end
   end
 
   def update
