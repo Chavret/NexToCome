@@ -28,7 +28,7 @@ class AllocineJob < ApplicationJob
 
           # and Event.where(name: element.search('.meta-title-link').text).blank?
           event = Event.new(
-            headline: element.search('.meta-title-link').text,
+            headline: "Sortie en salle: #{element.search('.meta-title-link').text}",
             category: categorie,
             sub_category: SubCategory.find_by(name: 'Cinéma'),
             description: seances_num,
