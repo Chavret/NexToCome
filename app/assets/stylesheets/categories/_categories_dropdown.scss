@@ -1,10 +1,7 @@
 .category-dropdown {
-  color: $yellow;
   opacity: 0.5;
   margin-top: 0px;
-  padding: 0px;
-  // border-top: 2px solid $yellow;
-  transition: background 0.3s ease;
+  padding: 0px;;
   text-align: center;
 }
 .category-dropdown.active {
@@ -15,15 +12,41 @@
   text-decoration: none;
   color: white;
 }
-.category-dropdown i {
-  color: $yellow;
-}
 .dropdown-border {
-  border-top: 1px solid rgba(246, 198, 103, 0.2);
-  // background-color: rgba(247, 250, 252, 1);
-  // margin-bottom: 5px;
+  margin-bottom: 10px;
+  display: none;
 }
 .fa.fa-angle-double-down {
   font-size: 25px;
-  // color: ;
+  transition: all 2s ease;
+}
+.fa.fa-angle-double-up {
+  font-size: 25px;
+  transition: all 2s ease;
+}
+
+.drop-economie {
+  color: $economie;
+  // border-bottom: 5px solid $economie;
+  // background-color: $economie;
+}
+.drop-societe {
+  color: $societe;
+  // border-bottom: 5px solid $societe;
+  // background-color: $societe;
+}
+.drop-viepratique {
+  color: $viepratique;
+  // border-bottom: 5px solid $viepratique;
+  // background-color: $viepratique;
+}
+.drop-sport {
+  color: $sport;
+  // border-bottom: 5px solid $sport;
+  // background-color: $sport;
+}
+.drop-culture {
+  color: $culture;
+  // border-bottom: 5px solid $culture;
+  // background-color: $culture;
 }

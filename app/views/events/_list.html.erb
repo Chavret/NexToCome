@@ -1,6 +1,8 @@
 <% events.each do |date, events| %>
 
-  <div class="column">
+  <% wkd = ( date.wday == 0 || date.wday == 6 ) ? "wkd" : " " %>
+
+  <div class="column <%= wkd %>">
     <h4><%= date.strftime("%A %e %B").sub('Monday', 'Lundi')
     .sub('Tuesday', 'Mardi')
     .sub('Wednesday', 'Mercredi')
