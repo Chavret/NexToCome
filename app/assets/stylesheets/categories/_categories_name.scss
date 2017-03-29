@@ -1,13 +1,13 @@
-.col-half-offset{
-    margin-left: 3.166667%;
-}
 .category-name {
   text-align: center;
   font-size: 25px;
   opacity: 0.2;
-  padding: 0px 0px;
+  padding: 25px 0px 10px 0px;
   margin-bottom: 0px;
   transition: background 0.3s ease;
+  line-height: 0px;
+  font-size: bold;
+  letter-spacing: 7px;
 }
 .category-name.active {
   opacity: 1;
@@ -19,26 +19,26 @@
 
 .cat-economie {
   color: $economie;
-  border-bottom: 5px solid $economie;
+  border-bottom: 4px solid $economie;
   // background-color: $economie;
 }
 .cat-societe {
   color: $societe;
-  border-bottom: 5px solid $societe;
+  border-bottom: 4px solid $societe;
   // background-color: $societe;
 }
 .cat-viepratique {
   color: $viepratique;
-  border-bottom: 5px solid $viepratique;
+  border-bottom: 4px solid $viepratique;
   // background-color: $viepratique;
 }
 .cat-sport {
   color: $sport;
-  border-bottom: 5px solid $sport;
+  border-bottom: 4px solid $sport;
   // background-color: $sport;
 }
 .cat-culture {
   color: $culture;
-  border-bottom: 5px solid $culture;
+  border-bottom: 4px solid $culture;
   // background-color: $culture;
 }

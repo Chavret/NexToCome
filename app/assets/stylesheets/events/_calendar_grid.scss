@@ -4,8 +4,8 @@
     white-space:nowrap;
 }
 .column {
-    // border-top: 5px solid $yellow;
-    background-color: $light-blue;
+    border-top: 1px solid $yellow;
+    background-color: rgba(241, 248, 253, 1);
     width: calc(100%/7 - 4px);
     height: calc(100vh - 70px); // navbar
     overflow:scroll;
@@ -23,6 +23,9 @@
   margin: 0px;
   // color: white;
   letter-spacing: 0.05em;
+}
+.wkd {
+  background-color: rgba(246, 198, 103, 0.1);
 }
 #event-div {
   background-color: white;
