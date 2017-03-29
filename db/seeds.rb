@@ -18,8 +18,6 @@
 # end
 
 
-
-
 Event.destroy_all
 SubCategory.destroy_all
 Category.destroy_all
