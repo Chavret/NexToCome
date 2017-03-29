@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       authorize @event
-      flash[:notice] = "Event successfully created"
+      flash[:notice] = "Merci d'avoir proposé cette actualité!"
       redirect_to events_path
     else
       render 'index'
