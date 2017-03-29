@@ -2,22 +2,48 @@
 
   <div class="column">
     <h4><%= date.strftime("%A %e %B") %></h4>
+
+    <!-- Meteo Symbol -->
+    <% if @meteo_hash[date].first.nil? %>
+      <% image_url = "loading2" %>
+      <% else %>
+      <% image_url = @meteo_hash[date].first.description.gsub("-","_") %>
+    <% end %>
+    <div class="meteo-symbol-div" ><%= image_tag image_url, id: "meteo-symbol" %></div>
+
     <div class="jours" >
       <% events.each do |event| %>
-        <div id="event-div">
-          <h5><%= event.sub_category.name %></h5>
-          <p><%= event.headline %></p>
-          <% unless event.description.nil? %>
-            <div class="description hide"><%= event.description %></div>
-          <% end %>
 
-           <div class="fb-share-button"
-           data-href="http://www.coming-up.fr/events/<%= event.id %>" data-layout="icon" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank"
-           href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.coming-up.fr%2Fevents%2F<%= event.id %>&amp;src=sdkpreparse">Share</a></div>
+        <div class="flexbox" id="event-div">
+
+          <div class="bar-<%= event.category.name.downcase.delete(' ').gsub(/[èéêë]/,'e') %> flex-title">
+            <h5>
+              <%= event.sub_category.name %>
+            </h5>
+          </div>
+
+          <div>
+            <p><%= event.headline %></p>
+            <% unless event.description.nil? %>
+              <div class="description hide"><%= event.description %></div>
+            <% end %>
+
+             <div class="fb-share-button"
+             data-href="http://www.coming-up.fr/events/<%= event.id %>" data-layout="icon" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank"
+             href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.coming-up.fr%2Fevents%2F<%= event.id %>&amp;src=sdkpreparse">
+              <i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+             </div>
+          </div>
 
         </div>
+
       <% end %>
     </div>
+
   </div>
 <% end %>
+
+<!-- <div class="arrow"></div> -->
+
+
 

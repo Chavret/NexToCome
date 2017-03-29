@@ -12,22 +12,94 @@
     display:inline-block;
     vertical-align:top;
     white-space:initial;
-    text-align: center;
     padding: 5px;
     margin: 0px;
 }
 .column h4 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .column h5 {
-  margin-bottom: 0px;
+  margin: 0px;
+  // color: white;
+  letter-spacing: 0.05em;
 }
 #event-div {
   background-color: white;
-  padding: 5px 2px;
-  // padding-bottom: 5px;
+  padding: 0px;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 2px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  min-height: 100px;
+  position: relative;
+  transition: all .2s ease-in-out;
+}
+#event-div:hover {
+  transform: scale(1.03);
+}
+#event-div p {
+  padding: 5px;
+  margin-left: 25px;
+}
+.flexbox {
+  display: flex;
+  justify-content: center;
+}
+.flex-title {
+  max-width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+.flex-title h5 {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
+.bar-economie {
+  color: white;
+  border-right: 5px solid $economie;
+  background: $economie ;
+  // color: $economie;
+}
+.bar-societe {
+  color: white;
+  border-right: 5px solid $societe;
+  background: $societe ;
+  // color: $societe;
+}
+.bar-viepratique {
+  color: white;
+  border-right: 5px solid $viepratique;
+  background: $viepratique ;
+  // color: $viepratique;
+}
+.bar-sport {
+  color: white;
+  border-right: 5px solid $sport;
+  background: $sport ;
+  // color: $sport;
+}
+.bar-culture {
+  color: white;
+  border-right: 5px solid $culture;
+  background: $culture ;
+  // color: $culture;
+}
+
+.fb-share-button {
+  opacity: 0.1;
+  text-align: right;
+  padding-right: 2px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.fb-share-button:hover {
+  opacity: 1;
 }

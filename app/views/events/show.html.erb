@@ -1,11 +1,17 @@
-<wrapper class="text-center bg-blue banner">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(241, 248, 253, 0.2) 0%,rgba(241, 248, 253, 0.3) 10%, rgba(241, 248, 253, 0.9) 30%,rgba(241, 248, 253, 0.95) 70%, rgba(241, 248, 253, 0.5) 100%, rgba(241, 248, 253, 0.3) 70%), url('<%= image_path "background.jpg" %>')">
 
-  <h1><%= @event.sub_category.name %></h1>
-  <br><br>
-  <h3><%= @event.headline %></h3>
+  <div class="show bg-blue">
 
-</wrapper>
+    <h1><%= @event.occurs_at.strftime("%m/%d/%Y") %></h1>
+    <h3><%= @event.headline %></h3>
+    <h4>sources: <%= @event.source %></h4>
+
+    <%= link_to "Retrouvez toute l'actualité à venir sur ComingUp >>", root_path, class: "btn-yellow large" %>
+
+  </div>
+
+</div>
 
 
-<% content_for :meta_title, @event.headline %>
-<% content_for :meta_description, @event.sub_category.name + @event.headline %>
+<% content_for :meta_title, @event.occurs_at.strftime("%m/%d/%Y") + " - " + @event.headline %>
+<% content_for :meta_description, "Retrouvez toute l'actualité à venir sur ComingUp >> \n" + @event.sub_category.name + " - " + @event.occurs_at.strftime("%a %e %B") + " - " + @event.headline %>

@@ -1,8 +1,7 @@
 <% categories.each do |category| %>
 
   <%= link_to events_path(category_filter_params(category.name)), remote: true do %>
-
-    <div class="col-xs-2 col-half-offset category-name <%= 'active' if @selected_categories.include?(category.name) %>" data-category-id="<%= category.id %>">
+    <div class="col-xs-2 col-half-offset category-name <%= 'active' if @selected_categories.include?(category.name) %> cat-<%= category.name.downcase.delete(' ').gsub(/[èéêë]/,'e') %> "data-category-id="<%= category.id %>">
         <%= category.name %>
     </div>
 

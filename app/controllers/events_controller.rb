@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :destroy, :update, :show]
-  skip_after_action :verify_authorized, only: [:admin, :sync_calendar]
-  skip_before_action :authenticate_user!, only: :sync_calendar
+  before_action :set_event, only: [:edit, :destroy, :update]
+  skip_after_action :verify_authorized, only: [:admin, :sync_calendar, :show]
+  skip_before_action :authenticate_user!, only: [:sync_calendar, :show]
 
 
   def new_for_user
@@ -65,6 +65,8 @@ class EventsController < ApplicationController
     categories_preferences = current_user.find_liked_items(votable_type: 'Category')
     sub_categories_preferences = current_user.find_liked_items(votable_type: 'SubCategory')
 
+
+
     @selected_categories = params[:categories].presence || categories_preferences.pluck(:name) || Category.pluck(:name)
     @selected_sub_categories = params[:sub_categories].presence || sub_categories_preferences.pluck(:name) || SubCategory.pluck(:name)
     # Including all sub categories of any selected category with no selected sub category
@@ -96,9 +98,23 @@ class EventsController < ApplicationController
       @hash[date].flatten!
     end
 
+    # Meteo Symbols
+    meteo_eventsall = Event.joins(:sub_category).where(sub_categories: { name: 'Météo'})
+    @meteo_hash = {}
+    date = Time.now.to_date - 1.days
+    30.times do
+      @meteo_hash[date += 1.day] = []
+    end
+    @meteo_hash.each do |date, _date_events|
+      @meteo_hash[date] << meteo_eventsall.where(occurs_at: date)
+      @meteo_hash[date].flatten!
+    end
+
   end
 
   def show
+     @event = Event.find(params[:id])
+    # No authorization cause not signed in
   end
 
   def destroy
@@ -112,6 +128,8 @@ class EventsController < ApplicationController
 
     selection_of_preferences(user)
 
+
+
     respond_to do |format|
       format.html
       format.ics do
@@ -120,17 +138,13 @@ class EventsController < ApplicationController
         @hash.each do |date, events|
           events.each do |event|
               happening = Icalendar::Event.new
-              happening.dtstart = date
-              happening.dtstart.ical_param "VALUE", "DATE"
-              happening.dtend = date
-              happening.dtend.ical_param "VALUE", "DATE"
+              happening.dtstart = DateTime.civil(date.year, date.month, date.day, 00, 00)
+              happening.dtend =  DateTime.civil(date.year, date.month, date.next_day.day, 00, 00)
               happening.summary = event.headline
               cal.add_event(happening)
             end
           end
-
         cal.publish
-        #apparition du pop up avec "lien intégré qui dépend du cal "
 
         render :text =>  cal.to_ical
       end
@@ -160,8 +174,5 @@ class EventsController < ApplicationController
       :status)
 
   end
-
-
-
 
 end

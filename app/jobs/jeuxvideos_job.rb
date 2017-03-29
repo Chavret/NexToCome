@@ -18,17 +18,35 @@ class JeuxvideosJob < ApplicationJob
       topo = element.search(".elco-description").text.gsub(/\s+/, " ").strip
       if date != ""
         event = Event.new(
-        occurs_at: date,
+        p occurs_at: date_translater_jeuxvideos(date),
         headline_initial: title,
-        headline: title,
+        headline: "Sortie du jeu #{title}",
         sub_category: SubCategory.find_by(name: 'Jeux vidéos'),
         # category: Category.find_by_name('Culture'),
-        status: "Pending"
+        status: "Valid"
         )
       p event
       p event.save!
      end
    end
+  end
 
+  def date_translater_jeuxvideos(date)
+      array = date.split(/\W+/)
+      translation = {
+      janvier: 'January',
+      fevrier: 'February',
+      mars: 'March',
+      avril: 'April',
+      mai: 'May',
+      juin: "June",
+      juillet: 'July',
+      aout: 'August',
+      septembre: 'September',
+      octobre: 'October',
+      novembre: 'November',
+      decembre: 'December'
+    }
+    date = [array[0], translation[array[1].to_sym], array[2]].join(' ')
   end
 end

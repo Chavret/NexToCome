@@ -75,7 +75,7 @@ cyclisme = SubCategory.create!(name: "Cyclisme", category_id: sport.id)
 football = SubCategory.create!(name: "Football", category_id: sport.id)
 hippisme = SubCategory.create!(name: "Hippisme", category_id: sport.id)
 rugby = SubCategory.create!(name: "Rugby", category_id: sport.id)
-sportsdecombat = SubCategory.create!(name: "Sports de combat", category_id: sport.id)
+sports = SubCategory.create!(name: "Sports", category_id: sport.id)
 tennis = SubCategory.create!(name: "Tennis", category_id: sport.id)
 voile = SubCategory.create!(name: "Voile", category_id: sport.id)
 

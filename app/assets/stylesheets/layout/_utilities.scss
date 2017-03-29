@@ -26,12 +26,16 @@ h4 {
  color: $blue;
 }
 h5 {
- color: $yellow;
+ // color: $yellow;
 }
 
 .dark-blue {
   color: $dark-blue;
 }
+.yellow-font {
+  color: $yellow;
+}
+
 a.fill-div {
     display: block;
     height: 100%;
