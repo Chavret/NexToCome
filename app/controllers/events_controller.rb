@@ -141,13 +141,9 @@ class EventsController < ApplicationController
         filename = "Your coming up calendar"
         @hash.each do |date, events|
           events.each do |event|
-              happening = Icalendar::Event.new
-              happening.dtstart = DateTime.civil(date.year, date.month, date.day, 00, 00)
-              happening.dtend =  DateTime.civil(date.year, date.month, date.next_day.day, 00, 00)
-              happening.summary = event.headline
-              cal.add_event(happening)
-            end
+            cal.add_event(event.to_ics)
           end
+        end
         cal.publish
 
         render :text =>  cal.to_ical
