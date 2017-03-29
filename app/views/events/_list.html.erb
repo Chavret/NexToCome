@@ -1,7 +1,26 @@
 <% events.each do |date, events| %>
 
   <div class="column">
-    <h4><%= date.strftime("%A %e %B") %></h4>
+    <h4><%= date.strftime("%A %e %B").sub('Monday', 'Lundi')
+    .sub('Tuesday', 'Mardi')
+    .sub('Wednesday', 'Mercredi')
+    .sub('Thursday', 'Jeudi')
+    .sub('Friday', 'Vendredi')
+    .sub('Saturday', 'Samedi')
+    .sub('Sunday', 'Dimanche')
+    .sub('January', 'Janvier')
+    .sub('February', 'Février')
+    .sub('March', 'Mars')
+    .sub('April', 'Avril')
+    .sub('May', 'Mai')
+    .sub('June', 'Juin')
+    .sub('Jully', 'Juillet')
+    .sub('August', 'Aout')
+    .sub('September', 'Septembre')
+    .sub('October', 'Octobre')
+    .sub('November', 'Novembre')
+    .sub('December', 'Decembre') %>
+    </h4>
 
     <!-- Meteo Symbol -->
     <% if @meteo_hash[date].first.nil? %>
