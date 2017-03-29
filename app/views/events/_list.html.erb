@@ -24,7 +24,7 @@
 
     <!-- Meteo Symbol -->
     <% if @meteo_hash[date].first.nil? %>
-      <% image_url = "loading2" %>
+      <% image_url = "loading2.png" %>
       <% else %>
       <% image_url = @meteo_hash[date].first.description.gsub("-","_")+".svg" %>
     <% end %>
