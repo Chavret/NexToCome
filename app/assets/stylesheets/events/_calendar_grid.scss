@@ -35,16 +35,22 @@
   position: relative;
   transition: all .2s ease-in-out;
 }
-#event-div:hover {
-  transform: scale(1.03);
-}
 #event-div p {
   padding: 5px;
   margin-left: 25px;
 }
 .flexbox {
+  transition: all 2s ease;
   display: flex;
   justify-content: center;
+}
+.flexbox:hover {
+  transform: scale(1.03);
+  // opacity: 1;
+}
+.flexbox:hover .fb-share-button {
+  transform: scale(1.03);
+  opacity: 0.9;
 }
 .flex-title {
   max-width: 25px;
@@ -93,6 +99,7 @@
 }
 
 .fb-share-button {
+  transition: all 2s ease;
   opacity: 0.1;
   text-align: right;
   padding-right: 2px;
@@ -100,6 +107,4 @@
   right: 0;
   bottom: 0;
 }
-.fb-share-button:hover {
-  opacity: 1;
-}
+
