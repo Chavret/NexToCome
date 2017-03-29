@@ -27,12 +27,12 @@ class MeteoJob < ApplicationJob
     #                     "partly-cloudy-day" => "partly_cloudy_day.svg",
     #                     "sun" => "sun.svg",
     #                     "partly-cloudy-night" => "partly_cloudy_night.svg" }
+    Event.where(sub_category: SubCategory.find_by(name: 'Météo')).destroy_all
     info = JSON.parse(meteo_serialized)
     current_time = info["currently"]["time"]
     i = 0
     until i == 8
       date = Time.at(info["daily"]["data"][i]["time"])
-      p date.class
       description1 = info["daily"]["data"][i]["icon"]
       description2 = info["daily"]["data"][i]["summary"].delete(".")
       description3 =info["daily"]["data"][i]["temperatureMin"].round
@@ -42,11 +42,12 @@ class MeteoJob < ApplicationJob
           headline_initial: "#{description2}, température de #{description3} à #{description4} degrés",
           headline: "#{description2}, température de #{description3} à #{description4} degrés",
           sub_category: SubCategory.find_by(name: 'Météo'),
+          source: "Météo France",
           status: "Valid",
           description: description1
           )
       p event
-      p event.save!
+      p event.save
 
       i +=1
     end

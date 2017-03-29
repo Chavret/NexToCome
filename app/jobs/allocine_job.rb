@@ -37,6 +37,7 @@ class AllocineJob < ApplicationJob
             status: "Valid"
             )
           p event.save
+          p event
           end
       end
     end
