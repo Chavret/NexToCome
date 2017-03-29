@@ -32,10 +32,12 @@ class AllocineJob < ApplicationJob
             category: categorie,
             sub_category: SubCategory.find_by(name: 'Cinéma'),
             description: seances_num,
+            source: "Allociné",
             occurs_at: date_translater(element.search('.date').text),
             status: "Valid"
             )
           p event.save
+          p event
           end
       end
     end
