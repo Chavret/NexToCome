@@ -2,7 +2,7 @@
 
   <%= link_to events_path(category_filter_params(category.name)), remote: true do %>
 
-    <div class="col-xs-2 col-half-offset category-name <%= 'active' if @selected_categories.include?(category.name) %>">
+    <div class="col-xs-2 col-half-offset category-name <%= 'active' if @selected_categories.include?(category.name) %>" data-category-id="<%= category.id %>">
         <%= category.name %>
     </div>
 

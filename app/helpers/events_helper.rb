@@ -6,8 +6,8 @@ module EventsHelper
       filter_params[:categories] = @selected_categories - [category_name]
     else
       filter_params[:categories] = @selected_categories + [category_name]
+      filter_params[:last_cat] = Category.find_by(name: category_name).id
     end
-
     filter_params[:sub_categories] = @selected_sub_categories
 
     filter_params
@@ -21,7 +21,7 @@ module EventsHelper
     else
       filter_params[:sub_categories] = @selected_sub_categories + [sub_category_name]
     end
-
+    filter_params[:last_cat] = SubCategory.find_by(name: sub_category_name).category.id
     filter_params[:categories] = @selected_categories
 
     filter_params
