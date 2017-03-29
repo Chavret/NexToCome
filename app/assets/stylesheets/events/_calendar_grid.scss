@@ -4,7 +4,7 @@
     white-space:nowrap;
 }
 .column {
-    border-top: 1px solid $yellow;
+    // border-top: 5px solid $yellow;
     background-color: $light-blue;
     width: calc(100%/7 - 4px);
     height: calc(100vh - 70px); // navbar

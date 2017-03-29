@@ -1,7 +1,12 @@
+<% i = 0 %>
+
 <% categories.each do |category| %>
 
-  <div id="category-<%= category.id %>" data-category-id="<%= category.id %>" class="col-xs-2 col-half-offset category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
-  <i id="arrow-category-<%= category.id %>" class="fa fa-angle-double-down arrow-category"></i>
+  <% i += 1 %>
+  <% offset = i == 1 ? "col-xs-offset-1" : " "  %>
+
+  <div id="category-<%= category.id %>" data-category-id="<%= category.id %>" class="col-xs-2 <%= offset %> category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
+  <i id="arrow-category-<%= category.id %>" class="fa fa-angle-double-down arrow-category drop-<%= category.name.downcase.delete(' ').gsub(/[èéêë]/,'e')%> "></i>
   </div>
 
 

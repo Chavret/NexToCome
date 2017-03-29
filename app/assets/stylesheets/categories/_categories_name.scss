@@ -4,23 +4,17 @@
 .category-name {
   text-align: center;
   font-size: 25px;
-  // color: $yellow;
   opacity: 0.2;
   padding: 0px 0px;
   margin-bottom: 0px;
   transition: background 0.3s ease;
-  // border-radius: 2px;
 }
 .category-name.active {
   opacity: 1;
-  // background: $yellow;
-  // color: white;
 }
 .category-name:hover {
   opacity: 0.5;
-  // background: $yellow;
   text-decoration: none;
-  // color: white;
 }
 
 .cat-economie {
@@ -28,74 +22,23 @@
   border-bottom: 5px solid $economie;
   // background-color: $economie;
 }
-.cat-economie.active {
-  transition: geas;
-  color: $economie;
-  border-bottom: 5px solid $economie;
-  // border-right: 3px solid $economie;
-  // border-left: 3px solid $economie;
-  // border-top: 2px solid $economie;
-  // background-color: $economie;
-
-}
 .cat-societe {
   color: $societe;
   border-bottom: 5px solid $societe;
   // background-color: $societe;
-}
-.cat-societe.active {
-  transition: geas;
-  color: $societe;
-  border-bottom: 5px solid $societe;
-  // border-right: 3px solid $societe;
-  // border-left: 3px solid $societe;
-  // border-top: 2px solid $societe;
-  // background-color: $societe;
-
 }
 .cat-viepratique {
   color: $viepratique;
   border-bottom: 5px solid $viepratique;
   // background-color: $viepratique;
 }
-.cat-viepratique.active {
-  transition: geas;
-  color: $viepratique;
-  border-bottom: 5px solid $viepratique;
-  // border-right: 3px solid $viepratique;
-  // border-left: 3px solid $viepratique;
-  // border-top: 2px solid $viepratique;
-  // background-color: $viepratique;
-
-}
 .cat-sport {
   color: $sport;
   border-bottom: 5px solid $sport;
   // background-color: $sport;
 }
-.cat-sport.active {
-  transition: geas;
-  color: $sport;
-  border-bottom: 5px solid $sport;
-  // border-right: 3px solid $sport;
-  // border-left: 3px solid $sport;
-  // border-top: 2px solid $sport;
-  // background-color: $sport;
-
-}
 .cat-culture {
   color: $culture;
   border-bottom: 5px solid $culture;
   // background-color: $culture;
-}
-.cat-culture.active {
-  transition: geas;
-  color: $culture;
-  border-bottom: 5px solid $culture;
-  // border-right: 3px solid $culture;
-  // border-left: 3px solid $culture;
-  // border-top: 2px solid $culture;
-  // background-color: $culture;
-  // color: white;
-
 }

@@ -103,16 +103,17 @@ class EventsController < ApplicationController
     end
 
     # Meteo Symbols
-    meteo_eventsall = Event.joins(:sub_category).where(sub_categories: { name: 'Météo'})
+    meteo_events = Event.joins(:sub_category).where(sub_categories: { name: 'Météo'})
     @meteo_hash = {}
     date = Time.now.to_date - 1.days
     30.times do
       @meteo_hash[date += 1.day] = []
     end
     @meteo_hash.each do |date, _date_events|
-      @meteo_hash[date] << meteo_eventsall.where(occurs_at: date)
+      @meteo_hash[date] << meteo_events.where(occurs_at: date)
       @meteo_hash[date].flatten!
     end
+
 
   end
 
