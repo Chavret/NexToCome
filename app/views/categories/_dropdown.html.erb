@@ -1,7 +1,7 @@
 <% categories.each do |category| %>
 
   <div id="category-<%= category.id %>" data-category-id="<%= category.id %>" class="col-xs-2 col-half-offset category-dropdown <%= 'active' if @selected_categories.include?(category.name) %>">
-  <i id="arrow-category-<%= category.id %>" class="fa fa-angle-double-up arrow-category"></i>
+  <i id="arrow-category-<%= category.id %>" class="fa fa-angle-double-down arrow-category"></i>
   </div>
 
 

@@ -57,6 +57,9 @@ class EventsController < ApplicationController
   end
 
   def selection_of_preferences(current_user)
+
+    @last_cat_id = params[:last_cat] unless params[:last_cat].nil?
+
     @categories = Category.all
 
     categories_preferences = current_user.find_liked_items(votable_type: 'Category')
