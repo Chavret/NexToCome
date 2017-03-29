@@ -1,7 +1,45 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(241, 248, 253, 0.1) 0%,rgba(241, 248, 253, 0.3) 10%, rgba(241, 248, 253, 0.9) 30%,rgba(241, 248, 253, 0.95) 40%, rgba(241, 248, 253, 1) 70%, rgba(241, 248, 253, 1) 90%), url('<%= image_path "background.jpg" %>')">
-  <div class="banner-content">
-    <p>Prenez de la <span>hauteur</span><br> Prenez un temps d'avance sur l'<span>actualité</span></p>
-    <h1>ComingUp <i class="fa fa-angle-double-right" aria-hidden="true"></i></h1>
+<div class="banner crop" style="background-image: linear-gradient(-225deg, rgba(241, 248, 253, 0.1) 0%,rgba(241, 248, 253, 0.3) 10%, rgba(241, 248, 253, 0.9) 30%,rgba(241, 248, 253, 0.95) 40%, rgba(241, 248, 253, 1) 70%, rgba(241, 248, 253, 1) 90%), url('<%= image_path "background.jpg" %>')">
+  <h1>ComingUp <i class="fa fa-angle-double-right" aria-hidden="true"></i></h1>
+  <div >
+    <h2>Ne subissez plus l'<span>actualité</span><br>Anticipez la !</h2>
     <%= link_to "CE QU'IL FAUT SAVOIR DE LA SEMAINE A VENIR", events_path, class: "btn-yellow large"  %>
   </div>
 </div>
+
+<section class="main">
+  <a class="arrow-wrap" href="#content">
+    <span class="arrow"></span>
+  </a>
+</section>
+
+<div class="banner text-center" >
+  <div class="banner-content">
+    <div class="container">
+      <div class="row">
+
+        <div class="text-left">
+          <h2>Retrouvez toute l'actualité...</h2>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="icon"><%= image_tag "news" %></div>
+          <h3>...de la semaine à venir</h3>
+          <p>Des sources <span>publiques et collaboratives</span> qui synthétisent vos medias préférés et des info exclusives</p>
+
+        </div>
+        <div class="col-xs-4">
+          <div class="icon"><%= image_tag "needle" %></div>
+          <h3>...sur-mesure</h3>
+          <p>Customisez votre agenda grâce aux    <span> 5 grandes familles d'info </span>et leur 50+ sous-familles</p>
+
+        </div>
+        <div class="col-xs-4">
+          <div class="icon"><%= image_tag "agenda" %></div>
+          <h3> ...sur votre agenda perso</h3>
+          <p>Synchronisez <span>tous vos agendas</span> et organisez votre emploi du temps en connaissance de cause !</p>
+
+        </div>
+      </div class="row">
+    </div>
+</div>
+
