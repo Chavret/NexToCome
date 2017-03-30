@@ -90,7 +90,7 @@ jours_speciaux = SubCategory.create!(name: "Jours spéciaux", category_id: viepr
 require 'csv'
 
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
-filepath    = File.join(__dir__, '170328Database.csv')
+filepath    = File.join(__dir__, '170329Database.csv')
 
 CSV.foreach(filepath, csv_options) do |row|
     event = Event.new(occurs_at: Date.parse(row[0]), headline: row[1], headline_initial: row[2], rating: row[4], source: row[5], description: row[7])
