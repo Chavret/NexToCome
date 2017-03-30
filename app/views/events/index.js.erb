@@ -18,7 +18,7 @@ $('.save-filters-form-container').html("<%= j render 'shared/save_preferences_fo
 
 $( document ).ajaxComplete(function() {
   $(".dropdown-border").hide();
-  $(".arrow-category").addClass(".fa fa-angle-double-up").removeClass(".fa fa-angle-double-down");
+  $(".arrow-category").addClass(".fa fa-angle-double-down").removeClass(".fa fa-angle-double-up");
   $("#show-category-<%= @last_cat_id %>").show();
-  $("#arrow-category-<%= @last_cat_id %>").addClass(".fa fa-angle-double-down").removeClass(".fa fa-angle-double-up");
+  $("#arrow-category-<%= @last_cat_id %>").addClass(".fa fa-angle-double-up").removeClass(".fa fa-angle-double-down");
 });
