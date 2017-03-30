@@ -8,7 +8,7 @@
   transition: all 0.3s ease;
 }
 .sub_category-name.active {
-  opacity: 0.8;
+  opacity: 1;
   // font-weight: bold;
 }
 .sub_category-name:hover {
@@ -52,6 +52,7 @@
   // border: 1px solid $yellow;
 }
 .fa.fa-check {
-  font-size: 10px;
+  font-size: 12px;
   color: $yellow;
 }
+
