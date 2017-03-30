@@ -2,42 +2,56 @@
   text-align: center;
   font-size: 19px;
   color: white;
-  opacity: 0.2;
+  opacity: 0.5;
   padding: 3px 10px;
   // border-bottom: 5px solid $yellow;
   transition: all 0.3s ease;
 }
 .sub_category-name.active {
-  opacity: 0.6;
-  font-weight: bold;
+  opacity: 0.8;
+  // font-weight: bold;
 }
 .sub_category-name:hover {
-  opacity: 0.4;
+  opacity: 0.6;
   text-decoration: none;
-  color: white;
+  // color: white;
+  // border: 1px solid $yellow;
+    // box-shadow:inset 0px 0px 0px 1px $yellow;
 }
 .subcat-economie {
-  // color: $economie;
-  // border-bottom: 5px solid $economie;
-  background-color: $economie;
+  color: $economie;
+  // border-right: 2px solid $economie;
+  // border-left: 2px solid $economie;
+  // background-color: $economie;
 }
 .subcat-societe {
-  // color: $societe;
-  // border-bottom: 5px solid $societe;
-  background-color: $societe;
+  color: $societe;
+  // border-right: 2px solid $societe;
+  // border-left: 2px solid $societe;
+  // background-color: $societe;
 }
 .subcat-viepratique {
-  // color: $viepratique;
-  // border-bottom: 5px solid $viepratique;
-  background-color: $viepratique;
+  color: $viepratique;
+  // border-right: 2px solid $viepratique;
+  // border-left: 2px solid $viepratique;
+  // background-color: $viepratique;
 }
 .subcat-sport {
-  // color: $sport;
-  // border-bottom: 5px solid $sport;
-  background-color: $sport;
+  color: $sport;
+  // border-right: 2px solid $sport;
+  // border-left: 2px solid $sport;
+  // background-color: $sport;
 }
 .subcat-culture {
-  // color: $culture;
-  // border-bottom: 5px solid $culture;
-  background-color: $culture;
+  color: $culture;
+  // border-right: 2px solid $culture;
+  // border-left: 2px solid $culture;
+  // background-color: $culture;
+}
+.subcat-test {
+  // border: 1px solid $yellow;
+}
+.fa.fa-check {
+  font-size: 10px;
+  color: $yellow;
 }
