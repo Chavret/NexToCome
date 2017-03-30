@@ -1,19 +1,22 @@
 <% categories.each do |category| %>
 
   <div id="show-category-<%= category.id %>" class="row dropdown-border" data-category-id="<%= category.id %>">
-    <% i = 0 %>
-    <% category.sub_categories.each do |sub_category| %>
-    <% i += 1 %>
-    <% offset = (i == 1 || i == 6 ) ? "col-xs-offset-1" : " "  %>
 
-      <%= link_to events_path(sub_category_filter_params(sub_category.name)), remote: true do %>
-        <div class="col-xs-2 <%= offset %> sub_category-name <%= 'active' if @selected_sub_categories.include?(sub_category.name) %> subcat-<%= category.name.downcase.delete(' ').gsub(/[èéêë]/,'e')%>">
-            <%= sub_category.name %>
-        </div>
+    <div class="subcat-test">
+
+      <% i = 0 %>
+      <% category.sub_categories.each do |sub_category| %>
+      <% i += 1 %>
+      <% offset = (i == 1 || i == 6 ) ? "col-xs-offset-1 " : " "  %>
+        <%= link_to events_path(sub_category_filter_params(sub_category.name)), remote: true do %>
+          <div class="col-xs-2 <%= offset %> sub_category-name <%= 'active' if @selected_sub_categories.include?(sub_category.name) %> subcat-<%= category.name.downcase.delete(' ').gsub(/[èéêë]/,'e')%>">
+              <%= sub_category.name %>
+              <i class="<%= 'fa fa-check' if @selected_sub_categories.include?(sub_category.name) %>" aria-hidden="true"></i>
+          </div>
+        <% end %>
       <% end %>
 
-    <% end %>
-
+    </div>
   </div>
 
 <% end %>
