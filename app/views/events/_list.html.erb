@@ -3,25 +3,25 @@
   <% wkd = ( date.wday == 0 || date.wday == 6 ) ? "wkd" : " " %>
 
   <div class="column <%= wkd %>">
-    <h4><%= date.strftime("%A %e %B").sub('Monday', 'Lundi')
-    .sub('Tuesday', 'Mardi')
-    .sub('Wednesday', 'Mercredi')
-    .sub('Thursday', 'Jeudi')
-    .sub('Friday', 'Vendredi')
-    .sub('Saturday', 'Samedi')
-    .sub('Sunday', 'Dimanche')
-    .sub('January', 'Janvier')
-    .sub('February', 'Février')
-    .sub('March', 'Mars')
-    .sub('April', 'Avril')
-    .sub('May', 'Mai')
-    .sub('June', 'Juin')
-    .sub('Jully', 'Juillet')
-    .sub('August', 'Aout')
-    .sub('September', 'Septembre')
-    .sub('October', 'Octobre')
-    .sub('November', 'Novembre')
-    .sub('December', 'Decembre') %>
+    <h4><%= date.strftime("%A %e %B").sub('Monday', 'lundi')
+    .sub('Tuesday', 'mardi')
+    .sub('Wednesday', 'mercredi')
+    .sub('Thursday', 'jeudi')
+    .sub('Friday', 'vendredi')
+    .sub('Saturday', 'samedi')
+    .sub('Sunday', 'dimanche')
+    .sub('January', 'janvier')
+    .sub('February', 'février')
+    .sub('March', 'mars')
+    .sub('April', 'avril')
+    .sub('May', 'mai')
+    .sub('June', 'juin')
+    .sub('Jully', 'juillet')
+    .sub('August', 'aout')
+    .sub('September', 'septembre')
+    .sub('October', 'octobre')
+    .sub('November', 'novembre')
+    .sub('December', 'decembre') %>
     </h4>
 
     <!-- Meteo Symbol -->
