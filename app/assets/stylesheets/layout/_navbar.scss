@@ -146,5 +146,21 @@
   border-left: 1px solid rgba(246, 198, 103, 0.5);
   border-top: 1px solid rgba(246, 198, 103, 0.5);
 }
+.agenda_export {
+  color: $blue;
+}
+.agenda_export:hover {
+  background: transparent !important;
+  color: $yellow !important;
+  transform: scale(1.1);
+  text-decoration: none;
+
+}
+.agenda_export:hover a {
+  text-decoration: none;
+  color: $blue;
+  transition: all .2s ease-in-out;
+  font-weight: bold;
 
 
+}
